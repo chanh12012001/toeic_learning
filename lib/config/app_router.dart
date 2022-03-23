@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:toeic_learning_app/screens/trainning/video_trainning.dart';
+import 'package:toeic_learning_app/screens/trainning_screen.dart';
 import '../screens/screens.dart';
 
 class AppRouter {
@@ -20,6 +22,10 @@ class AppRouter {
         return ForgotPasswordScreen.route();
       case LectureScreen.routeName:
         return LectureScreen.route();
+      case TrainningScreen.routeName:
+        return TrainningScreen.route();  
+       case VideoTrainning.routeName:
+        return VideoTrainning.route();    
       default:
         return _errorRoute();
     }

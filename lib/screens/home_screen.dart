@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:toeic_learning_app/screens/trainning_screen.dart';
 import 'package:toeic_learning_app/screens/widgets/rounded_button.dart';
 import '../preferences/lecture_type_preference.dart';
 import 'screens.dart';
@@ -47,6 +48,13 @@ class HomeScreen extends StatelessWidget {
               text: 'Lecture',
               onPressed: () {
                 Navigator.pushNamed(context, LectureScreen.routeName);
+              },
+              width: 0.4,
+            ),
+            RoundedButton(
+              text: 'Trainning',
+              onPressed: () {
+                Navigator.pushNamed(context, TrainningScreen.routeName);
               },
               width: 0.4,
             )
