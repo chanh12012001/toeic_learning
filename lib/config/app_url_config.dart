@@ -14,4 +14,13 @@ class AppUrl {
   static const String getAllTopics = baseURL + "/getAllTopics";
   static const String deleteTopic = baseURL + "/deleteTopic/";
   static const String updateTopic = baseURL + "/updateTopic/";
+
+  static const String getAllLessons = baseURL + "/getAllLessons";
+
+  static const String getAllVideos = baseURL + "/getAllVideos";
+  static const String createNewVideo = baseURL + "/createNewVideo";
+  static const String deleteVideo = baseURL + "/deleteVideo/";
+  static const String updateVideo = baseURL + "/updateVideo/";
+
+  static const String getAllVocabularies = baseURL + "/getAllVocabularies/";
 }
