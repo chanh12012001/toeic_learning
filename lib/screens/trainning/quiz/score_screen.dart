@@ -37,7 +37,11 @@ class ScoreScreen extends StatelessWidget {
                 Spacer(),
                 InkWell(
                   onTap: () {
-                    Get.to(QuizScreen());
+                    _qnController.resetQuestionNumber();
+                    Navigator.pop(context);
+                    Navigator.pop(context);
+                    Navigator.pop(context);
+                    Navigator.pop(context);
                     // _qnController.resert() ;
                   },
                   child: Container(

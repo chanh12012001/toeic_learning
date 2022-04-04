@@ -28,7 +28,7 @@ class _TestQuizState extends State<TestQuiz> {
       appBar: AppBar(
           backgroundColor: Colors.transparent,
           elevation: 0,
-          actions: [FlatButton(onPressed: () {}, child: Text("Skip"))]),
+         ),
       body: quizBody(),
     );
   }

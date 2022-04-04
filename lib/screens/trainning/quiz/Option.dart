@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:toeic_learning_app/models/quiz_model.dart';
 import 'package:toeic_learning_app/screens/widgets/quiz/process_controller.dart';
 
 class Option extends StatelessWidget {
@@ -7,11 +8,12 @@ class Option extends StatelessWidget {
     Key? key,
     required this.text,
     required this.index,
-    required this.press,
+    required this.press, required this.quiz,
   }) : super(key: key);
   final String text;
   final int index;
   final VoidCallback press;
+  final Quiz quiz;
 
   @override
   Widget build(BuildContext context) {
@@ -45,33 +47,52 @@ class Option extends StatelessWidget {
                 border: Border.all(color: getTheRightColor()),
                 borderRadius: BorderRadius.circular(15),
               ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              child: Column(
                 children: [
-                  Text(
-                    "${index + 1} $text",
-                    style: TextStyle(
-                      color: getTheRightColor(),
-                      fontSize: 16,
-                    ),
-                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "${index + 1} $text",
+                        style: TextStyle(
+                          color: getTheRightColor(),
+                          fontSize: 16,
+                        ),
+                      ),
+                      Container(
+                        height: 26,
+                        width: 26,
+                        decoration: BoxDecoration(
+                          color: getTheRightColor() == Colors.white
+                              ? Colors.transparent
+                              : getTheRightColor(),
+                          borderRadius: BorderRadius.circular(50),
+                          border: Border.all(
+                            color: getTheRightColor(),
+                          ),
+                        ),
+                        child: getTheRightColor() == Colors.white
+                            ? null
+                            : Icon(
+                                getTheRightIcon(),
+                                size: 16,
+                              ),
+                      ),
+                    ],
+                  ),getTheRightColor() == Color.fromARGB(255, 4, 172, 10) ?
                   Container(
-                    height: 26,
-                    width: 26,
+                    padding: EdgeInsets.all(15),
+                    width: MediaQuery.of(context).size.width * .5,
                     decoration: BoxDecoration(
-                      color: getTheRightColor() == Colors.white
-                          ? Colors.transparent
-                          : getTheRightColor(),
-                      borderRadius: BorderRadius.circular(50),
-                      border: Border.all(
-                        color: getTheRightColor(),
+                        borderRadius: BorderRadius.circular(20),
+                        color: Color.fromARGB(255, 140, 195, 240)),
+                    child: Text(
+                      quiz.explain,
+                      style: TextStyle(
+                        fontSize: 20,
                       ),
                     ),
-                    child: getTheRightColor() == Colors.white ? null : Icon(
-                      getTheRightIcon(),
-                      size: 16,
-                    ),
-                  ),
+                  ):Container(),
                 ],
               ),
             ),

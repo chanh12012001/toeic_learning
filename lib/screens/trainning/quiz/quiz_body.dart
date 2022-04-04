@@ -31,7 +31,8 @@ class quizBody extends StatelessWidget {
                 child: Obx(
                   () => Text.rich(
                     TextSpan(
-                      text: 'Question ${_questionController.questionNumber.value}',
+                      text:
+                          'Question ${_questionController.questionNumber.value}',
                       style: TextStyle(
                         fontSize: 25,
                         color: Color.fromARGB(255, 109, 106, 106),

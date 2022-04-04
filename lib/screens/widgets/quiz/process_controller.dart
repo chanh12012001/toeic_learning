@@ -25,7 +25,9 @@ class QuestionController extends GetxController
             id: question['id'],
             question: question['question'],
             options: question['options'],
-            answer: question['answer_index']),
+            answer: question['answer_index'],
+            explain: question['explain'],
+            ),
       )
       .toList();
 
@@ -54,8 +56,12 @@ class QuestionController extends GetxController
       ..addListener(() {
         update();
       });
+
     _animationController.forward().whenComplete(nextQuestion);
     _pageController = PageController();
+    _pageController.addListener(() {
+      _questionNumber.value = _pageController.page!.round() + 1;
+    });
     super.onInit();
   }
 
@@ -99,21 +105,12 @@ class QuestionController extends GetxController
     _questionNumber.value = index + 1;
   }
 
-  // void resert() {
-  //   _question.clear();
-  //   _question = Quiz.sample_data
-  //     .map(
-  //       (question) => Quiz(
-  //           id: question['id'],
-  //           question: question['question'],
-  //           options: question['options'],
-  //           answer: question['answer_index']),
-  //     )
-  //     .toList();
-  //   pageController.jumpToPage(0);
-  //   _isAnswered = false;
-  //   _animationController.reset();
-  //   _animationController.forward().whenComplete(nextQuestion);
-  //   _questionNumber.value = 1;
-  // }
+  void resetQuestionNumber() {
+    _questionNumber.value = 1;
+    _numberOfCorrectAns = 0;
+    _selectedAns = -1;
+    _isAnswered = false;
+    _animationController.reset();
+    _animationController.forward();
+  }
 }
