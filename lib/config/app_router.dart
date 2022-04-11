@@ -2,9 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:toeic_learning_app/screens/quiz_screen.dart';
 import 'package:toeic_learning_app/screens/trainning/quiz/quiz_trainning.dart';
 import 'package:toeic_learning_app/screens/trainning/quiz/score_screen.dart';
-import 'package:toeic_learning_app/screens/trainning/quiz/test_quiz.dart';
-import 'package:toeic_learning_app/screens/trainning/video_trainning.dart';
-import 'package:toeic_learning_app/screens/trainning_screen.dart';
 import '../screens/screens.dart';
 
 class AppRouter {
@@ -25,17 +22,9 @@ class AppRouter {
       case ForgotPasswordScreen.routeName:
         return ForgotPasswordScreen.route();
       case LectureScreen.routeName:
-        return LectureScreen.route();
-      case TrainningScreen.routeName:
-        return TrainningScreen.route();  
-       case VideoTrainning.routeName:
-        return VideoTrainning.route();    
+        return LectureScreen.route();  
       case QuizScreen.routeName:
         return QuizScreen.route();  
-      case QuizTrainning.routeName:
-        return QuizTrainning.route();   
-      case TestQuiz.routeName:
-        return TestQuiz.route();   
       default:
         return _errorRoute();
     }

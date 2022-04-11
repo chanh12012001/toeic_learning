@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:toeic_learning_app/screens/quiz_screen.dart';
-import 'package:toeic_learning_app/screens/trainning_screen.dart';
 import 'package:toeic_learning_app/screens/widgets/rounded_button.dart';
 import '../preferences/lecture_type_preference.dart';
 import 'screens.dart';

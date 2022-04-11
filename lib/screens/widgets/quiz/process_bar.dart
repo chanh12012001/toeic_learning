@@ -1,55 +1,71 @@
+import 'dart:async';
+import 'dart:ffi';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:toeic_learning_app/screens/widgets/quiz/process_controller.dart';
+import 'package:flutter/painting.dart';
+import 'package:toeic_learning_app/models/quiz_model.dart';
+import 'package:toeic_learning_app/screens/trainning/quiz/score_screen.dart';
 
-class ProcessBar extends StatelessWidget {
+class ProcessBar extends StatefulWidget {
+  final List<Question> question;
+  final bool isCompleted;
   const ProcessBar({
     Key? key,
+    required this.question,
+    required this.isCompleted,
   }) : super(key: key);
 
   @override
+  State<ProcessBar> createState() => _ProcessBarState();
+}
+
+class _ProcessBarState extends State<ProcessBar> {
+  static const maxSeconds = 300 ;
+  int seconds = maxSeconds;
+  Timer? timer;
+
+  @override
+  void initState() {
+    timer = Timer.periodic(Duration(seconds: 1), (_) {
+      if (seconds > 0 && !widget.isCompleted) {
+        setState(() {
+          seconds--;
+        });
+      } else if (seconds == 0) {
+        timer?.cancel();
+        Navigator.push(
+          context,
+          MaterialPageRoute<bool>(builder: (BuildContext context) {
+            return ScoreScreen(
+              numberOfCorrectAns: null,
+              questions: null,
+            );
+          }),
+        );
+      }
+    });
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      height: 35,
-      decoration: BoxDecoration(
-        border: Border.all(color: Color.fromARGB(255, 201, 200, 200),width: 3
+    return Center(
+      child: Container(
+        width: 65,
+        height: 65,
+        decoration: BoxDecoration(
+          border:
+              Border.all(color: Color.fromARGB(255, 201, 200, 200), width: 3),
+          borderRadius: BorderRadius.circular(50),
         ),
-        borderRadius: BorderRadius.circular(50),
-      ),
-      child: GetBuilder<QuestionController>(
-        init: QuestionController(),
-        builder: (controller) {
-          return Stack(
-            children: [
-              LayoutBuilder(builder:(context, constraints) => Container(
-                width: constraints.maxWidth*controller.animation.value,
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.bottomLeft,
-                  end: Alignment.topRight,
-                  colors: [
-                    Color.fromARGB(255, 123, 186, 238),
-                    Color.fromARGB(255, 30, 103, 230)
-                  ],
-                  ),
-                  borderRadius: BorderRadius.circular(50),
-                ),
-              ) ),
-              Positioned.fill(
-                child: 
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                  Text("${(controller.animation.value * 30).round()}sec"),
-                  Icon(Icons.lock_clock),
-                ],),
-              ))
-            ],
-          );
-        }
+        child: Center(
+          child: Text(
+            '$seconds',
+            style: TextStyle(
+                fontSize: 25,
+                fontWeight: FontWeight.bold,
+                color: Color.fromARGB(255, 169, 208, 240)),
+          ),
+        ),
       ),
     );
   }

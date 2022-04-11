@@ -1,18 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:toeic_learning_app/screens/trainning/quiz/test_quiz.dart';
-import 'package:websafe_svg/websafe_svg.dart';
+import 'package:toeic_learning_app/screens/trainning/quiz/quiz_body.dart';
 
 class QuizTrainning extends StatefulWidget {
-  static const String routeName = '/quiz-trainning';
+  final int exam;
+  final int part;
 
-  static Route route() {
-    return MaterialPageRoute(
-      builder: (_) => const QuizTrainning(),
-      settings: const RouteSettings(name: routeName),
-    );
-  }
-
-  const QuizTrainning({Key? key}) : super(key: key);
+  const QuizTrainning({Key? key, required this.exam, required this.part}) : super(key: key);
 
   @override
   State<QuizTrainning> createState() => _QuizTrainningState();
@@ -42,7 +35,16 @@ class _QuizTrainningState extends State<QuizTrainning> {
                   Spacer(),
                   InkWell(
                     onTap: () {
-                      Navigator.pushNamed(context, TestQuiz.routeName);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute<bool>(
+                            builder: (BuildContext context) {
+                          return quizBody(
+                            exam: widget.exam,
+                            part: widget.part,
+                          );
+                        }),
+                      );
                     },
                     child: Container(
                       width: double.infinity,

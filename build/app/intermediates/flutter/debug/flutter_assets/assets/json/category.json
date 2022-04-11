@@ -1,34 +1,50 @@
 [
     {
         "title":"Động vật",
-        "img":"assets/images/animal.png"
+        "img":"assets/images/animal.png",
+        "exam":1,
+        "part":2
     },
     {
         "title":"Con người",
-        "img":"assets/images/people.jpg"
+        "img":"assets/images/people.jpg",
+        "exam":1,
+        "part":5
     },
     {
         "title":"Thức ăn",
-        "img":"assets/images/food.jpg"
+        "img":"assets/images/food.jpg",
+        "exam":1,
+        "part":5
     },
     {
         "title":"Công việc",
-        "img":"assets/images/work.jpg"
+        "img":"assets/images/work.jpg",
+        "exam":1,
+        "part":5
     },
     {
         "title":"Động vật",
-        "img":"assets/images/animal.png"
+        "img":"assets/images/animal.png",
+        "exam":1,
+        "part":5
     },
     {
         "title":"Con người",
-        "img":"assets/images/people.jpg"
+        "img":"assets/images/people.jpg",
+        "exam":1,
+        "part":5
     },
     {
         "title":"Thức ăn",
-        "img":"assets/images/food.jpg"
+        "img":"assets/images/food.jpg",
+        "exam":1,
+        "part":5
     },
     {
         "title":"Công việc",
-        "img":"assets/images/work.jpg"
+        "img":"assets/images/work.jpg",
+        "exam":1,
+        "part":5
     }
 ]

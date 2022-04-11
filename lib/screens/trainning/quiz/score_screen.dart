@@ -1,15 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:toeic_learning_app/screens/quiz_screen.dart';
 import 'package:toeic_learning_app/screens/trainning/quiz/QuestionCard.dart';
-import 'package:toeic_learning_app/screens/widgets/quiz/process_controller.dart';
 
-class ScoreScreen extends StatelessWidget {
-  const ScoreScreen({Key? key}) : super(key: key);
+import '../../../models/quiz_model.dart';
+
+class ScoreScreen extends StatefulWidget {
+  final int? numberOfCorrectAns;
+  final List<Question>? questions;
+  const ScoreScreen({Key? key, this.numberOfCorrectAns, this.questions})
+      : super(key: key);
 
   @override
+  State<ScoreScreen> createState() => _ScoreScreenState();
+}
+
+class _ScoreScreenState extends State<ScoreScreen> {
+  @override
   Widget build(BuildContext context) {
-    QuestionController _qnController = Get.put(QuestionController());
     return Scaffold(
       body: Stack(
         children: [
@@ -26,23 +33,29 @@ class ScoreScreen extends StatelessWidget {
                   ),
                 ),
                 Spacer(),
-                Text(
-                  "${_qnController.numberOfCorrectAns * 10}/${_qnController.questions.length * 10}",
-                  style: TextStyle(
-                    fontSize: 50,
-                    fontWeight: FontWeight.bold,
-                    color: Color.fromARGB(255, 179, 176, 176),
-                  ),
-                ),
+                (widget.numberOfCorrectAns != null && widget.questions != null)
+                    ? Text(
+                        "${widget.numberOfCorrectAns! * 10}/${widget.questions!.length * 10}",
+                        style: TextStyle(
+                          fontSize: 50,
+                          fontWeight: FontWeight.bold,
+                          color: Color.fromARGB(255, 179, 176, 176),
+                        ),
+                      )
+                    : Text(
+                        "You don't finish your test.\n Try again. \nTry your best!",
+                        style: TextStyle(
+                          fontSize: 40,
+                          fontWeight: FontWeight.bold,
+                          color: Color.fromARGB(255, 179, 176, 176),
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
                 Spacer(),
                 InkWell(
                   onTap: () {
-                    _qnController.resetQuestionNumber();
-                    Navigator.pop(context);
-                    Navigator.pop(context);
-                    Navigator.pop(context);
-                    Navigator.pop(context);
-                    // _qnController.resert() ;
+                    //resert Quiz
+                    Navigator.pushNamed(context, QuizScreen.routeName);
                   },
                   child: Container(
                     width: double.infinity,

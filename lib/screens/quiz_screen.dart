@@ -4,7 +4,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:toeic_learning_app/screens/home_screen.dart';
 import 'package:toeic_learning_app/screens/trainning/quiz/quiz_trainning.dart';
-import 'package:toeic_learning_app/screens/trainning/quiz/test_quiz.dart';
 import 'package:toeic_learning_app/screens/widgets/rounded_button.dart';
 
 class QuizScreen extends StatefulWidget {
@@ -98,7 +97,15 @@ class _QuizScreenState extends State<QuizScreen> {
                       return Row(
                         children: [
                           InkWell(
-                            onTap: (() => Navigator.pushNamed(context, QuizTrainning.routeName)),
+                            onTap: (() =>  Navigator.push(
+          context,
+          MaterialPageRoute<bool>(builder: (BuildContext context) {
+            return QuizTrainning(
+              exam: category[a]['exam'],
+              part: category[a]['part'],
+            );
+          }),
+        )),
                             child: Container(
                               height: 220,
                               width: (MediaQuery.of(context).size.width-90)/2,
@@ -133,14 +140,22 @@ class _QuizScreenState extends State<QuizScreen> {
                                   child: Text(
                                     category[a]['title'],
                                     style:
-                                        TextStyle(fontSize: 20, color: Colors.blue),
+                                        TextStyle(fontSize: 25, color: Colors.blue, fontWeight: FontWeight.bold),
                                   ),
                                 ),
                               ),
                             ),
                           ),
                           InkWell(
-                            onTap: (() => Navigator.pushNamed(context, QuizTrainning.routeName)),
+                            onTap: (() => Navigator.push(
+                              context,
+                              MaterialPageRoute<bool>(builder: (BuildContext context) {
+                                return QuizTrainning(
+                                  exam: category[b]['exam'],
+                                  part: category[b]['part'],
+                                );
+                              }),
+                            )),
                             child: Container(
                               height: 220,
                               width: (MediaQuery.of(context).size.width-90)/2,
@@ -175,7 +190,7 @@ class _QuizScreenState extends State<QuizScreen> {
                                   child: Text(
                                     category[b]['title'],
                                     style:
-                                        TextStyle(fontSize: 20, color: Colors.blue),
+                                        TextStyle(fontSize: 25, color: Colors.blue, fontWeight: FontWeight.bold),
                                   ),
                                 ),
                               ),

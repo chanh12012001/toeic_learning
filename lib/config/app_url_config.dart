@@ -14,4 +14,6 @@ class AppUrl {
   static const String getAllTopics = baseURL + "/getAllTopics";
   static const String deleteTopic = baseURL + "/deleteTopic/";
   static const String updateTopic = baseURL + "/updateTopic/";
+
+  static const String getAllQuizs = baseURL + "/getAllQuestionsByPartOfExamId";
 }

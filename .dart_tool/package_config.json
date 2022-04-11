@@ -20,6 +20,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "audioplayers",
+      "rootUri": "file:///C:/Users/ACER/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/audioplayers-0.20.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "boolean_selector",
       "rootUri": "file:///C:/Users/ACER/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/boolean_selector-2.1.0",
       "packageUri": "lib/",
@@ -46,12 +52,6 @@
     {
       "name": "collection",
       "rootUri": "file:///C:/Users/ACER/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/collection-1.15.0",
-      "packageUri": "lib/",
-      "languageVersion": "2.12"
-    },
-    {
-      "name": "convert",
-      "rootUri": "file:///C:/Users/ACER/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/convert-3.0.1",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -128,12 +128,6 @@
       "languageVersion": "2.12"
     },
     {
-      "name": "flutter_svg",
-      "rootUri": "file:///C:/Users/ACER/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/flutter_svg-1.0.3",
-      "packageUri": "lib/",
-      "languageVersion": "2.12"
-    },
-    {
       "name": "flutter_test",
       "rootUri": "file:///D:/Done/Done.HK2Nam2/AndroidStudio/flutter/packages/flutter_test",
       "packageUri": "lib/",
@@ -142,12 +136,6 @@
     {
       "name": "flutter_web_plugins",
       "rootUri": "file:///D:/Done/Done.HK2Nam2/AndroidStudio/flutter/packages/flutter_web_plugins",
-      "packageUri": "lib/",
-      "languageVersion": "2.12"
-    },
-    {
-      "name": "get",
-      "rootUri": "file:///C:/Users/ACER/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/get-4.6.1",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -212,12 +200,6 @@
       "languageVersion": "2.12"
     },
     {
-      "name": "logging",
-      "rootUri": "file:///C:/Users/ACER/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/logging-1.0.2",
-      "packageUri": "lib/",
-      "languageVersion": "2.12"
-    },
-    {
       "name": "lottie",
       "rootUri": "file:///C:/Users/ACER/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/lottie-1.2.2",
       "packageUri": "lib/",
@@ -250,18 +232,6 @@
     {
       "name": "path",
       "rootUri": "file:///C:/Users/ACER/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/path-1.8.1",
-      "packageUri": "lib/",
-      "languageVersion": "2.12"
-    },
-    {
-      "name": "path_drawing",
-      "rootUri": "file:///C:/Users/ACER/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/path_drawing-1.0.0",
-      "packageUri": "lib/",
-      "languageVersion": "2.12"
-    },
-    {
-      "name": "path_parsing",
-      "rootUri": "file:///C:/Users/ACER/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/path_parsing-1.0.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -306,12 +276,6 @@
       "rootUri": "file:///C:/Users/ACER/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/path_provider_windows-2.0.5",
       "packageUri": "lib/",
       "languageVersion": "2.12"
-    },
-    {
-      "name": "petitparser",
-      "rootUri": "file:///C:/Users/ACER/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/petitparser-4.4.0",
-      "packageUri": "lib/",
-      "languageVersion": "2.14"
     },
     {
       "name": "pinput",
@@ -440,6 +404,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "uuid",
+      "rootUri": "file:///C:/Users/ACER/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/uuid-3.0.6",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "vector_math",
       "rootUri": "file:///C:/Users/ACER/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/vector_math-2.1.2",
       "packageUri": "lib/",
@@ -476,12 +446,6 @@
       "languageVersion": "2.12"
     },
     {
-      "name": "websafe_svg",
-      "rootUri": "file:///C:/Users/ACER/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/websafe_svg-2.1.1",
-      "packageUri": "lib/",
-      "languageVersion": "2.15"
-    },
-    {
       "name": "win32",
       "rootUri": "file:///C:/Users/ACER/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/win32-2.4.1",
       "packageUri": "lib/",
@@ -494,19 +458,13 @@
       "languageVersion": "2.12"
     },
     {
-      "name": "xml",
-      "rootUri": "file:///C:/Users/ACER/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/xml-5.3.1",
-      "packageUri": "lib/",
-      "languageVersion": "2.14"
-    },
-    {
       "name": "toeic_learning_app",
       "rootUri": "../",
       "packageUri": "lib/",
       "languageVersion": "2.16"
     }
   ],
-  "generated": "2022-03-29T13:15:21.542009Z",
+  "generated": "2022-04-11T03:09:46.383889Z",
   "generator": "pub",
   "generatorVersion": "2.17.0-182.1.beta"
 }
