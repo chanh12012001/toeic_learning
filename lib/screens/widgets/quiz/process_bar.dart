@@ -19,7 +19,7 @@ class ProcessBar extends StatefulWidget {
 }
 
 class _ProcessBarState extends State<ProcessBar> {
-  static const maxSeconds = 300 ;
+  static const maxSeconds = 300;
   int seconds = maxSeconds;
   Timer? timer;
 
@@ -44,6 +44,11 @@ class _ProcessBarState extends State<ProcessBar> {
       }
     });
     super.initState();
+  }
+
+  void dispose() {
+    timer?.cancel();
+    super.dispose();
   }
 
   @override

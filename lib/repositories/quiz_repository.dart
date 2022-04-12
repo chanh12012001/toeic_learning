@@ -8,9 +8,22 @@ class QuizRepository {
   Future<List<Question>> getQuizlist(examId, part) async {
     Response response = await get(
       Uri.parse(AppUrl.getAllQuizs + "/$examId"),
+      headers: {'Content-Type': 'application/json', 'part': part.toString()},
+    );
+    if (response.statusCode == 200) {
+      List jsonResponse = json.decode(response.body)['questions'];
+      return jsonResponse.map((quiz) => Question.fromJson(quiz)).toList();
+    } else {
+      throw Exception('Failed to load quiz from the Internet');
+    }
+  }
+
+  Future<List<Question>> getQuizlistByGroup(examId, groupquestion) async {
+    Response response = await get(
+      Uri.parse(AppUrl.getAllQuizsGroup + "/$examId"),
       headers: {
         'Content-Type': 'application/json',
-        'part': part.toString()
+        'groupquestion': groupquestion.toString()
       },
     );
     if (response.statusCode == 200) {

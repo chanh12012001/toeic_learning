@@ -1,50 +1,38 @@
 [
     {
-        "title":"Động vật",
-        "img":"assets/images/animal.png",
+        "title":"Part1",
+        "img":"assets/images/test.png",
+        "exam":1,
+        "part":1
+    },
+    {
+        "title":"Part2",
+        "img":"assets/images/test.png",
         "exam":1,
         "part":2
     },
     {
-        "title":"Con người",
-        "img":"assets/images/people.jpg",
+        "title":"Part3",
+        "img":"assets/images/test.png",
+        "exam":1,
+        "part":3
+    },
+    {
+        "title":"Part4",
+        "img":"assets/images/test.png",
+        "exam":1,
+        "part":4
+    },
+    {
+        "title":"Part5",
+        "img":"assets/images/test.png",
         "exam":1,
         "part":5
     },
     {
-        "title":"Thức ăn",
-        "img":"assets/images/food.jpg",
+        "title":"Part6",
+        "img":"assets/images/test.png",
         "exam":1,
-        "part":5
-    },
-    {
-        "title":"Công việc",
-        "img":"assets/images/work.jpg",
-        "exam":1,
-        "part":5
-    },
-    {
-        "title":"Động vật",
-        "img":"assets/images/animal.png",
-        "exam":1,
-        "part":5
-    },
-    {
-        "title":"Con người",
-        "img":"assets/images/people.jpg",
-        "exam":1,
-        "part":5
-    },
-    {
-        "title":"Thức ăn",
-        "img":"assets/images/food.jpg",
-        "exam":1,
-        "part":5
-    },
-    {
-        "title":"Công việc",
-        "img":"assets/images/work.jpg",
-        "exam":1,
-        "part":5
+        "part":6
     }
 ]

@@ -39,10 +39,8 @@ class _AudioQuizState extends State<AudioQuiz> {
 
   @override
   void dispose() {
-    setState(() {
-      _audioPlayer.stop();
-      _isPlaying = false;
-    });
+    _audioPlayer.stop();
+    _isPlaying = false;
     super.dispose();
   }
 

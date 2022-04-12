@@ -6,9 +6,12 @@ import 'package:toeic_learning_app/screens/trainning/quiz/score_screen.dart';
 
 class QuestionCard extends StatefulWidget {
   final List<Question> questions;
+  final List<Question> allQuestions;
   final int currentPage;
   final Function(bool value) number;
   final int numberOfCorrectAns;
+  final Function(bool value) isSelected;
+  final int countSelected;
   final int part;
   const QuestionCard({
     Key? key,
@@ -18,6 +21,9 @@ class QuestionCard extends StatefulWidget {
     required this.number,
     required this.numberOfCorrectAns,
     required this.part,
+    required this.allQuestions,
+    required this.isSelected,
+    required this.countSelected,
   }) : super(key: key);
 
   final Question quiz;
@@ -44,104 +50,93 @@ class _QuestionCardState extends State<QuestionCard> {
       widget.quiz.explain3!,
       widget.quiz.explain4!
     ];
-    return ListView(
-      shrinkWrap: true,
-      children: [
-        Container(
-          width: MediaQuery.of(context).size.width * 0.9,
-          margin: EdgeInsets.only(right: 10),
-          padding: EdgeInsets.all(15),
-          decoration: BoxDecoration(
-            color: Color.fromARGB(255, 169, 208, 240),
-            borderRadius: BorderRadius.circular(25),
+    return Container(
+      width: MediaQuery.of(context).size.width * 0.9,
+      margin: EdgeInsets.only(right: 10, bottom: 10),
+      padding: EdgeInsets.all(15),
+      decoration: BoxDecoration(
+        color: Color.fromARGB(255, 169, 208, 240),
+        borderRadius: BorderRadius.circular(25),
+      ),
+      child: Column(
+        children: [
+          widget.part == 1
+              ? Image.network(
+                  "${widget.quiz.image}",
+                  fit: BoxFit.cover,
+                  width: MediaQuery.of(context).size.width * 0.5,
+                  height: MediaQuery.of(context).size.height * 0.2,
+                )
+              : Container(),
+          SizedBox(
+            height: 5,
           ),
-          child: Column(
-            children: [
-              widget.part == 1
-                  ? Image.network(
-                      "${widget.quiz.image}",
-                      fit: BoxFit.cover,
-                      width: MediaQuery.of(context).size.width * 0.5,
-                      height: MediaQuery.of(context).size.height * 0.2,
-                    )
-                  : Container(),
-              SizedBox(
-                height: 5,
-              ),
-              (widget.part > 0 &&
-                      widget.part < 7 &&
-                      widget.part != 5 &&
-                      widget.part != 6)
-                  ? AudioQuiz(
-                      audio: widget.quiz.audio!,
-                      end: end,
-                    )
-                  : Container(),
-              SizedBox(
-                height: 5,
-              ),
-              (widget.part > 0 && widget.part < 7 && widget.part != 5)
-                  ? Text(
-                      widget.quiz.paragraph!,
-                      style: TextStyle(
-                        fontSize: 25,
-                        color: Colors.white,
-                      ),
-                    )
-                  : Container(),
-              SizedBox(
-                height: 5,
-              ),
-              Text(
-                widget.quiz.question!,
-                style: TextStyle(
-                  fontSize: 20,
-                  color: Colors.white,
-                ),
-              ),
-              SizedBox(
-                height: 8,
-              ),
-              selectedAns != null
-                  ? Container(
-                      padding: EdgeInsets.all(15),
-                      decoration: BoxDecoration(
-                        color: Color.fromARGB(255, 88, 173, 243),
-                        borderRadius: BorderRadius.circular(25),
-                      ),
-                      child: Text(
-                        widget.quiz.explainQuestion!,
-                        style: TextStyle(
-                          fontSize: 20,
-                          color: Colors.white,
-                        ),
-                      ),
-                    )
-                  : Container(),
-              SizedBox(
-                height: 8,
-              ),
-              //show list answer and check
-              ...List.generate(
-                options.length,
-                (index) => Option(
-                  selectedAns: selectedAns,
-                  correctAns: widget.quiz.correctAnswer!,
-                  index: index,
-                  text: options[index],
-                  press: () {
-                    setState(() {
-                      checkAns(widget.quiz, index);
-                      widget.number(widget.quiz.correctAnswer == selectedAns);
-                    });
-                  },
-                  explain: explains[index],
-                ),
-              ),
-            ],
+          (widget.part == 1 || widget.part == 2)
+              ? AudioQuiz(
+                  audio: widget.quiz.audio!,
+                  end: end,
+                )
+              : Container(),
+          SizedBox(
+            height: 5,
           ),
-        ),
-      ],
+          SizedBox(
+            height: 5,
+          ),
+          widget.part != 6
+              ? Text(
+                  widget.quiz.question!,
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.white,
+                  ),
+                )
+              : Container(),
+          SizedBox(
+            height: 8,
+          ),
+          selectedAns != null
+              ? Container(
+                  padding: EdgeInsets.all(15),
+                  decoration: BoxDecoration(
+                    color: Color.fromARGB(255, 88, 173, 243),
+                    borderRadius: BorderRadius.circular(25),
+                  ),
+                  child: Text(
+                    widget.quiz.explainQuestion!,
+                    style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.white,
+                    ),
+                  ),
+                )
+              : Container(),
+          SizedBox(
+            height: 8,
+          ),
+          //show list answer and check
+          ...List.generate(
+            options.length,
+            (index) => Option(
+              selectedAns: selectedAns,
+              correctAns: widget.quiz.correctAnswer!,
+              index: index,
+              text: options[index],
+              press: () {
+                setState(() {
+                  checkAns(widget.quiz, index);
+                  widget.number(widget.quiz.correctAnswer == selectedAns);
+                  widget.isSelected(true);
+                });
+              },
+              explain: explains[index],
+            ),
+          ),
+          SizedBox(
+            height: 50,
+          ),
+        ],
+      ),
     );
   }
 
@@ -160,7 +155,7 @@ class _QuestionCardState extends State<QuestionCard> {
         selectedAns = "D";
         break;
     }
-    if (widget.currentPage == widget.questions.length - 1) {
+    if (widget.countSelected == widget.allQuestions.length - 1) {
       quizEnd();
     }
   }
@@ -207,7 +202,7 @@ class _QuestionCardState extends State<QuestionCard> {
                               builder: (BuildContext context) {
                             return ScoreScreen(
                               numberOfCorrectAns: widget.numberOfCorrectAns,
-                              questions: widget.questions,
+                              questions: widget.allQuestions,
                             );
                           }),
                         );
