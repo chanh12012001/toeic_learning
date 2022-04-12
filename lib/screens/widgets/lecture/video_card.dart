@@ -44,7 +44,10 @@ class _VideoCardState extends State<VideoCard> {
                         return MyAlertDialog(
                           title: 'Warning !!!',
                           subTitle: 'Bạn có chắc chắn muốn xoá ?',
-                          action: () {
+                          actionLeft: () {
+                            Navigator.pop(context);
+                          },
+                          actionRight: () {
                             _deleteVideo(widget.video);
                           },
                         );

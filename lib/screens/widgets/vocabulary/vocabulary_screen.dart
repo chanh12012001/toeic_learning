@@ -3,12 +3,13 @@ import 'package:provider/provider.dart';
 import 'package:toeic_learning_app/models/vocabulary_lesson_model.dart';
 import 'package:toeic_learning_app/models/vocabulary_model.dart';
 import 'package:toeic_learning_app/providers/vocabulary_provider.dart';
+import 'package:toeic_learning_app/screens/widgets/vocabulary/flash_card/page_view.dart';
 import 'package:toeic_learning_app/screens/widgets/vocabulary/vocabulary_list.dart';
 
 import '../../../config/theme.dart';
 import '../loader.dart';
 
-class VocabularyScreen extends StatelessWidget {
+class VocabularyScreen extends StatefulWidget {
   final VocabularyLesson lesson;
   const VocabularyScreen({
     Key? key,
@@ -16,31 +17,53 @@ class VocabularyScreen extends StatelessWidget {
   }) : super(key: key);
 
   @override
+  State<VocabularyScreen> createState() => _VocabularyScreenState();
+}
+
+class _VocabularyScreenState extends State<VocabularyScreen> {
+  bool isFlashCardScreen = false;
+  @override
   Widget build(BuildContext context) {
     VocabularyProvider _vocabularyProvider =
         Provider.of<VocabularyProvider>(context);
     return Scaffold(
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: () {
-          // Add your onPressed code here!
-        },
-        label: const Text(
-          'Flashcard',
-          style: TextStyle(fontSize: 16),
-        ),
-        icon: const Icon(Icons.card_membership),
-        backgroundColor: Colors.pink,
-      ),
+      floatingActionButton: isFlashCardScreen
+          ? Container()
+          : FloatingActionButton.extended(
+              onPressed: () {
+                setState(() {
+                  isFlashCardScreen = true;
+                });
+              },
+              label: const Text(
+                'Flashcard',
+                style: TextStyle(fontSize: 16),
+              ),
+              icon: const Icon(Icons.flip),
+              backgroundColor: Colors.pink,
+            ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       appBar: AppBar(
         toolbarHeight: 105,
         iconTheme: IconThemeData(color: blackCoffeeColor),
         elevation: 0,
         backgroundColor: whiteColor,
+        actions: [
+          isFlashCardScreen == true
+              ? IconButton(
+                  onPressed: () {
+                    setState(() {
+                      isFlashCardScreen = false;
+                    });
+                  },
+                  icon: const Icon(Icons.list),
+                )
+              : Container(),
+        ],
         title: Row(
           children: [
             CircleAvatar(
-              backgroundImage: NetworkImage(lesson.imageUrl!),
+              backgroundImage: NetworkImage(widget.lesson.imageUrl!),
               maxRadius: 35,
               minRadius: 35,
             ),
@@ -51,7 +74,7 @@ class VocabularyScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      lesson.name!,
+                      widget.lesson.name!,
                       style: TextStyle(color: blackColor),
                       maxLines: 2,
                     ),
@@ -59,7 +82,7 @@ class VocabularyScreen extends StatelessWidget {
                       height: 5,
                     ),
                     Text(
-                      "(" + lesson.meaning! + ")",
+                      "(" + widget.lesson.meaning! + ")",
                       style: TextStyle(color: blackCoffeeColor, fontSize: 18),
                     ),
                   ],
@@ -80,13 +103,16 @@ class VocabularyScreen extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.only(top: 10, bottom: 70),
         child: FutureBuilder<List<Vocabulary>>(
-          future: _vocabularyProvider.getVocabularyList(lesson.id!.toString()),
+          future: _vocabularyProvider
+              .getVocabularyList(widget.lesson.id!.toString()),
           builder: (context, snapshot) {
             if (snapshot.hasError) {
               return Text("${snapshot.error}");
             }
             return snapshot.hasData
-                ? VocabularyList(vocabularies: snapshot.data!)
+                ? isFlashCardScreen
+                    ? PageViewVocabularyCard(vocabularies: snapshot.data!)
+                    : VocabularyList(vocabularies: snapshot.data!)
                 : const Center(
                     child: ColorLoader(),
                   );

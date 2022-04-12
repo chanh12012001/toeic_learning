@@ -29,16 +29,14 @@ class LessonCard extends StatelessWidget {
             left: 0,
             right: 0,
             child: Container(
-              height: 120,
+              height: 105,
               decoration: BoxDecoration(
-                borderRadius: const BorderRadius.only(
-                    bottomLeft: Radius.circular(20),
-                    bottomRight: Radius.circular(20)),
+                borderRadius: const BorderRadius.all(Radius.circular(20)),
                 gradient: LinearGradient(
                   begin: Alignment.bottomCenter,
                   end: Alignment.topCenter,
                   colors: [
-                    Colors.black.withOpacity(0.7),
+                    Colors.black.withOpacity(0.6),
                     Colors.transparent,
                   ],
                 ),
@@ -62,7 +60,7 @@ class LessonCard extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(
-                    height: 10,
+                    height: 8,
                   ),
                   SizedBox(
                     width: size.width / 2.7,

@@ -6,14 +6,24 @@ import '../../providers/loading_provider.dart';
 import 'loader.dart';
 
 class MyAlertDialog extends StatelessWidget {
+  final String? textButtonLeft;
+  final String? textButtonRight;
+  final Color? backgroundColorIcon;
+  final IconData? icon;
   final String title;
-  final String subTitle;
-  final Function action;
+  final String? subTitle;
+  final Function actionRight;
+  final Function actionLeft;
   const MyAlertDialog({
     Key? key,
     required this.title,
-    required this.subTitle,
-    required this.action,
+    this.subTitle,
+    required this.actionLeft,
+    required this.actionRight,
+    this.icon = Icons.assistant_photo,
+    this.backgroundColorIcon = Colors.red,
+    this.textButtonLeft = "Huỷ bỏ",
+    this.textButtonRight = "OK",
   }) : super(key: key);
 
   @override
@@ -45,14 +55,16 @@ class MyAlertDialog extends StatelessWidget {
                       const SizedBox(
                         height: 10,
                       ),
-                      Text(
-                        subTitle,
-                        style: GoogleFonts.lato(
-                          textStyle: const TextStyle(
-                            fontSize: 20,
-                          ),
-                        ),
-                      ),
+                      subTitle == null
+                          ? Container()
+                          : Text(
+                              subTitle!,
+                              style: GoogleFonts.lato(
+                                textStyle: const TextStyle(
+                                  fontSize: 20,
+                                ),
+                              ),
+                            ),
                       const SizedBox(
                         height: 25,
                       ),
@@ -66,19 +78,19 @@ class MyAlertDialog extends StatelessWidget {
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   _buildButton(
-                                    text: 'Huỷ bỏ',
+                                    text: textButtonLeft!,
                                     onPressed: () {
-                                      Navigator.pop(context);
+                                      actionLeft();
                                     },
                                     backgroundColor: Colors.grey,
                                   ),
                                   _buildButton(
-                                    text: 'OK',
+                                    text: textButtonRight!,
                                     onPressed: () {
-                                      action();
                                       setState(() {
                                         loadingProvider.setLoading(true);
                                       });
+                                      actionRight();
                                     },
                                     backgroundColor: Colors.teal[300]!,
                                   ),
@@ -89,13 +101,13 @@ class MyAlertDialog extends StatelessWidget {
                   ),
                 ),
               ),
-              const Positioned(
+              Positioned(
                   top: -60,
                   child: CircleAvatar(
-                    backgroundColor: Colors.redAccent,
+                    backgroundColor: backgroundColorIcon,
                     radius: 60,
                     child: Icon(
-                      Icons.assistant_photo,
+                      icon,
                       color: Colors.white,
                       size: 45,
                     ),

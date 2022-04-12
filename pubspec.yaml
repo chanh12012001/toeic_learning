@@ -28,6 +28,7 @@ dependencies:
   flutter_slidable: ^1.2.0
   youtube_player_flutter: ^8.0.0
   audioplayers: ^0.20.1
+  flip_card: ^0.6.0
 
 dev_dependencies:
   flutter_test:

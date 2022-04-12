@@ -42,7 +42,10 @@ class _LectureTopicCardState extends State<LectureTopicCard> {
                           return MyAlertDialog(
                             title: 'Warning !!!',
                             subTitle: 'Bạn có chắc chắn muốn xoá ?',
-                            action: () {
+                            actionLeft: () {
+                              Navigator.pop(context);
+                            },
+                            actionRight: () {
                               _deleteTopic(widget.topic);
                             },
                           );
