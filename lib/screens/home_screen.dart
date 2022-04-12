@@ -56,8 +56,16 @@ class HomeScreen extends StatelessWidget {
               onPressed: () {
                 Navigator.pushNamed(context, QuizScreen.routeName);
               },
+                width: 0.4,
+            ),
+            RoundedButton(
+              text: 'Vocabulary',
+              color: Colors.black,
+              onPressed: () {
+                Navigator.pushNamed(context, VocabularyLessonScreen.routeName);
+              },
               width: 0.4,
-            )
+            ),
           ],
         ),
       ),

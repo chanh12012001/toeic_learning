@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 
 import '../../../models/topic.dart';
 import '../../../providers/topic_provider.dart';
+import 'video_trainning.dart';
 import 'lecture_topic_card.dart';
 
 class LectureList extends StatefulWidget {
@@ -40,9 +41,20 @@ class _LectureListState extends State<LectureList> {
                 child: SlideAnimation(
                   child: FadeInAnimation(
                     child: GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => VideoTrainning(
+                              topic: topic,
+                            ),
+                          ),
+                        );
+                      },
                       child: LectureTopicCard(
-                          topic: topic, authorization: widget.authorization!),
+                        topic: topic,
+                        authorization: widget.authorization!,
+                      ),
                     ),
                   ),
                 ),

@@ -1,38 +1,38 @@
 [
     {
         "title":"Number 1",
-        "time":"21 seconds",
+        "time":"125 seconds",
         "thumbnail":"assets/images/people.jpg",
-        "videoUrl":"https://www.youtube.com/watch?v=HEiPxjVR8CU"
+        "videoUrl":"https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4?fbclid=IwAR2DymQB3QDVn36jYywvQigihXJL3WNie5hLppyj2G0O52QGBWVIuNvSyic"
     },
     {
         "title":"Number 2",
-        "time":"21 seconds",
+        "time":"125 seconds",
         "thumbnail":"assets/images/people.jpg",
-        "videoUrl":"https://youtu.be/A6gAwrwv19s"
+        "videoUrl":"https://developer.apple.com/videos/wwdc/2015/?id=711"
     },
     {
         "title":"Number 3",
-        "time":"21 seconds",
+        "time":"125 seconds",
         "thumbnail":"assets/images/people.jpg",
-        "videoUrl":"https://youtu.be/A6gAwrwv19s"
+        "videoUrl":"https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4"
     },
     {
         "title":"Number 1",
-        "time":"21 seconds",
+        "time":"125 seconds",
         "thumbnail":"assets/images/people.jpg",
-        "videoUrl":"https://youtu.be/A6gAwrwv19s"
+        "videoUrl":"https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4"
     },
     {
         "title":"Number 2",
-        "time":"21 seconds",
+        "time":"125 seconds",
         "thumbnail":"assets/images/people.jpg",
-        "videoUrl":"https://youtu.be/A6gAwrwv19s"
+        "videoUrl":"https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4"
     },
     {
         "title":"Number 3",
-        "time":"21 seconds",
+        "time":"125 seconds",
         "thumbnail":"assets/images/people.jpg",
-        "videoUrl":"https://youtu.be/A6gAwrwv19s"
+        "videoUrl":"https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4"
     }
 ]

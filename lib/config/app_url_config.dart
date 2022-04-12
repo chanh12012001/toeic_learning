@@ -17,4 +17,12 @@ class AppUrl {
 
   static const String getAllQuizs = baseURL + "/getAllQuestionsByPartOfExamId";
   static const String getAllQuizsGroup = baseURL + "/getAllQuestionsByQuestionGroupByExamId";
+  static const String getAllLessons = baseURL + "/getAllLessons";
+
+  static const String getAllVideos = baseURL + "/getAllVideos";
+  static const String createNewVideo = baseURL + "/createNewVideo";
+  static const String deleteVideo = baseURL + "/deleteVideo/";
+  static const String updateVideo = baseURL + "/updateVideo/";
+
+  static const String getAllVocabularies = baseURL + "/getAllVocabularies/";
 }

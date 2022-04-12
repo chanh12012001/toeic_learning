@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:toeic_learning_app/screens/quiz_screen.dart';
-import 'package:toeic_learning_app/screens/trainning/quiz/quiz_trainning.dart';
-import 'package:toeic_learning_app/screens/trainning/quiz/score_screen.dart';
 import '../screens/screens.dart';
 
 class AppRouter {
@@ -25,6 +23,8 @@ class AppRouter {
         return LectureScreen.route();  
       case QuizScreen.routeName:
         return QuizScreen.route();  
+      case VocabularyLessonScreen.routeName:
+        return VocabularyLessonScreen.route();
       default:
         return _errorRoute();
     }
