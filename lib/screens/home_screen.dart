@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:toeic_learning_app/screens/quiz_screen.dart';
 import 'package:toeic_learning_app/screens/widgets/rounded_button.dart';
 import '../preferences/lecture_type_preference.dart';
 import 'screens.dart';
@@ -55,6 +56,14 @@ class HomeScreen extends StatelessWidget {
               color: Colors.black,
               onPressed: () {
                 Navigator.pushNamed(context, VocabularyLessonScreen.routeName);
+              },
+              width: 0.4,
+            ),
+            RoundedButton(
+              text: 'Quiz',
+              color: Colors.black,
+              onPressed: () {
+                Navigator.pushNamed(context, QuizScreen.routeName);
               },
               width: 0.4,
             ),

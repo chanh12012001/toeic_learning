@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:toeic_learning_app/providers/quiz_provider.dart';
 import 'package:toeic_learning_app/providers/video_provider.dart';
 import 'package:toeic_learning_app/providers/vocabulary_lesson_provider.dart';
 import 'package:toeic_learning_app/providers/vocabulary_provider.dart';
@@ -31,6 +32,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => VocabularyLessonProvider()),
         ChangeNotifierProvider(create: (_) => VideoProvider()),
         ChangeNotifierProvider(create: (_) => VocabularyProvider()),
+        ChangeNotifierProvider(create: (_) => QuizProvider()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
