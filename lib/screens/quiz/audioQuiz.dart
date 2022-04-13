@@ -50,7 +50,15 @@ class _AudioQuizState extends State<AudioQuiz> {
       width: MediaQuery.of(context).size.width * 0.8,
       height: 60,
       decoration: BoxDecoration(
-          color: Colors.white, borderRadius: BorderRadius.circular(50)),
+          gradient: LinearGradient(
+            colors: [
+              Color.fromARGB(255, 0, 114, 207),
+              Color.fromARGB(255, 167, 210, 245),
+            ],
+            begin: Alignment.bottomRight,
+            end: Alignment.topLeft
+          ), 
+          borderRadius: BorderRadius.circular(50)),
       child: Row(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.center,

@@ -121,7 +121,7 @@ class _QuizScreenState extends State<QuizScreen> {
                                 ),
                                 boxShadow: [
                                   BoxShadow(
-                                    blurRadius: 3,
+                                    blurRadius: 5,
                                     offset: Offset(5, 5),
                                     color: Color.fromARGB(255, 58, 112, 206)
                                         .withOpacity(0.1),

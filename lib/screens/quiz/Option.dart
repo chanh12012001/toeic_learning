@@ -53,7 +53,8 @@ class Option extends StatelessWidget {
                       color: getTheRightColor(),
                     ),
                   ),
-                  child: getTheRightColor() == Colors.white || getTheRightColor() == Color.fromARGB(255, 5, 99, 177)
+                  child: getTheRightColor() == Colors.white ||
+                          getTheRightColor() == Color.fromARGB(255, 205, 241, 250)
                       ? null
                       : Icon(
                           getTheRightIcon(),
@@ -90,7 +91,7 @@ class Option extends StatelessWidget {
                   ),
                 ),
               )
-            else if (getTheRightColor() == Color.fromARGB(255, 5, 99, 177))
+            else if (getTheRightColor() == Color.fromARGB(255, 205, 241, 250))
               Container(
                 padding: EdgeInsets.all(15),
                 width: MediaQuery.of(context).size.width * .5,
@@ -149,7 +150,7 @@ class Option extends StatelessWidget {
       } else if (index == _selectedAns && selectedAns != correctAns) {
         return Color.fromARGB(255, 247, 129, 121);
       }
-      return Color.fromARGB(255, 5, 99, 177);
+      return Color.fromARGB(255, 205, 241, 250);
     }
     return Colors.white;
   }

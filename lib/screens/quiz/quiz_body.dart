@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:toeic_learning_app/config/theme.dart';
 import 'package:toeic_learning_app/models/quiz_model.dart';
 import 'package:toeic_learning_app/providers/quiz_provider.dart';
 import 'package:toeic_learning_app/screens/quiz/QuestionCard.dart';
 import 'package:toeic_learning_app/screens/quiz/audioQuiz.dart';
 import 'package:toeic_learning_app/screens/widgets/loader.dart';
 import 'package:toeic_learning_app/screens/widgets/quiz/process_bar.dart';
-
 
 class quizBody extends StatefulWidget {
   final int exam;
@@ -44,7 +44,7 @@ class _quizBodyState extends State<quizBody> {
   Widget build(BuildContext context) {
     QuizProvider quizProvider = Provider.of<QuizProvider>(context);
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 111, 190, 255),
+      backgroundColor: Colors.white,
       appBar: AppBar(
         //action when click done
         actions: [
@@ -93,8 +93,8 @@ class _quizBodyState extends State<quizBody> {
           SizedBox(
             height: 15,
           ),
-         Expanded(
-            flex: 2,
+          Expanded(
+            flex: 3,
             child: FutureBuilder<List<Question>>(
                 future: quizProvider.getQuizList(widget.exam, widget.part),
                 builder: (context, snapshot) {
@@ -103,7 +103,12 @@ class _quizBodyState extends State<quizBody> {
                   }
                   return snapshot.hasData
                       ? PageView.builder(
-                          controller: _pageControllerAudio,
+                          controller: widget.part == 3 ||
+                                  widget.part == 4 ||
+                                  widget.part == 6
+                              ? _pageControllerAudio
+                              : null,
+                          physics: NeverScrollableScrollPhysics(),
                           itemCount: count(snapshot.data!) == 0
                               ? snapshot.data!.length
                               : count(snapshot.data!),
@@ -119,22 +124,27 @@ class _quizBodyState extends State<quizBody> {
                                     ? Column(
                                         crossAxisAlignment:
                                             CrossAxisAlignment.center,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceAround,
                                         children: [
                                           Text.rich(
                                             TextSpan(
-                                              text:
-                                                  'Question ${countSelected}',
+                                              text: 'Question ${countSelected}',
                                               style: TextStyle(
-                                                fontSize: 25,
-                                                color: Colors.white,
-                                              ),
+                                                  fontSize: 25,
+                                                  color: Color.fromARGB(
+                                                      255, 89, 176, 247),
+                                                  fontFamily: "San Francisco",
+                                                  fontWeight: FontWeight.bold,
+                                                  fontStyle: FontStyle.italic),
                                               children: [
                                                 TextSpan(
                                                   text:
                                                       "/${snapshot.data!.length}",
                                                   style: TextStyle(
                                                     fontSize: 20,
-                                                    color: Colors.white,
+                                                    color: Color.fromARGB(
+                                                        255, 89, 176, 247),
                                                   ),
                                                 ),
                                               ],
@@ -156,26 +166,36 @@ class _quizBodyState extends State<quizBody> {
                                               : Container(),
                                           widget.part == 6
                                               ? Text(
-                                                  snapshot.data![0].question!,
+                                                  snapshot1.data![0].question!,
                                                   style: TextStyle(
-                                                    fontSize: 20,
-                                                    color: Colors.white,
-                                                  ),
+                                                      fontSize: 30,
+                                                      color: Color.fromARGB(
+                                                          255, 0, 140, 255),
+                                                      fontFamily:
+                                                          "San Francisco",
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      fontStyle:
+                                                          FontStyle.italic),
                                                 )
                                               : Container(),
                                           Text(
-                                            snapshot.data![0].paragraph!,
+                                            snapshot1.data![0].paragraph!,
                                             style: TextStyle(
-                                              fontSize: 20,
-                                              color: Colors.white,
-                                            ),
+                                                fontSize: 25,
+                                                color: Color.fromARGB(
+                                                    255, 0, 140, 255),
+                                                fontFamily: "San Francisco",
+                                                fontWeight: FontWeight.bold,
+                                                fontStyle: FontStyle.italic),
                                           ),
                                         ],
                                       )
                                     : const Center(
                                         child: ColorLoader(),
                                       );
-                              }))
+                              }),
+                        )
                       : const Center(
                           child: ColorLoader(),
                         );
@@ -183,13 +203,14 @@ class _quizBodyState extends State<quizBody> {
           ),
           Divider(
             thickness: 1.5,
+            color: blueColor,
           ),
           SizedBox(
             height: 15,
           ),
           //List question
           Expanded(
-            flex: 7,
+            flex: 8,
             child: FutureBuilder<List<Question>>(
               future: quizProvider.getQuizList(widget.exam, widget.part),
               builder: (context, snapshot) {
@@ -205,7 +226,11 @@ class _quizBodyState extends State<quizBody> {
                             if (currentPage == snapshot.data!.length - 1) {
                               isCompleted = true;
                             }
-                            _pageControllerAudio.jumpToPage(value);
+                            if (widget.part == 3 ||
+                                widget.part == 4 ||
+                                widget.part == 6) {
+                              _pageControllerAudio.jumpToPage(value);
+                            }
                           });
                         },
                         itemCount: count(snapshot.data!) == 0

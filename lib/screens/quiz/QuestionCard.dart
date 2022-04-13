@@ -55,7 +55,14 @@ class _QuestionCardState extends State<QuestionCard> {
       margin: EdgeInsets.only(right: 10, bottom: 10),
       padding: EdgeInsets.all(15),
       decoration: BoxDecoration(
-        color: Color.fromARGB(255, 169, 208, 240),
+        gradient: LinearGradient(
+          colors: [
+            Color.fromARGB(255, 127, 193, 247),
+            Color.fromARGB(255, 1, 139, 253),
+          ],
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+        ),
         borderRadius: BorderRadius.circular(25),
       ),
       child: Column(
@@ -106,7 +113,7 @@ class _QuestionCardState extends State<QuestionCard> {
                     widget.quiz.explainQuestion!,
                     style: TextStyle(
                       fontSize: 20,
-                      color: Colors.white,
+                      color: Colors.black,
                     ),
                   ),
                 )

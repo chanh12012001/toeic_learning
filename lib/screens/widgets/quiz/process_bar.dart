@@ -59,7 +59,7 @@ class _ProcessBarState extends State<ProcessBar> {
         height: 65,
         decoration: BoxDecoration(
           border:
-              Border.all(color: Color.fromARGB(255, 201, 200, 200), width: 3),
+              Border.all(color: Color.fromARGB(255, 131, 193, 243), width: 5),
           borderRadius: BorderRadius.circular(50),
         ),
         child: Center(
@@ -68,7 +68,7 @@ class _ProcessBarState extends State<ProcessBar> {
             style: TextStyle(
                 fontSize: 25,
                 fontWeight: FontWeight.bold,
-                color: Color.fromARGB(255, 169, 208, 240)),
+                color: Color.fromARGB(255, 0, 140, 255)),
           ),
         ),
       ),
