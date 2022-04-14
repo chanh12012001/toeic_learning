@@ -25,6 +25,7 @@ class _quizBodyState extends State<quizBody> {
   PageController _pageController = PageController();
   PageController _pageControllerAudio = PageController();
   int currentPage = 0;
+  int pageview = 0;
   bool isCompleted = false;
   static const maxSeconds = 30;
   int seconds = maxSeconds;
@@ -32,10 +33,13 @@ class _quizBodyState extends State<quizBody> {
   int countSelected = 0;
   bool end = false;
   int page = 1;
+  int quesionNumberGroup = 0;
+  int valueKeep = 0;
+  int keepValuePage = 0;
   @override
   void initState() {
     _pageController = PageController(
-      initialPage: currentPage,
+      initialPage: pageview,
       viewportFraction: 0.8,
     );
   }
@@ -121,75 +125,84 @@ class _quizBodyState extends State<quizBody> {
                                   return Text("${snapshot1.error}");
                                 }
                                 return snapshot1.hasData
-                                    ? Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.center,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceAround,
-                                        children: [
-                                          Text.rich(
-                                            TextSpan(
-                                              text: 'Question ${countSelected}',
-                                              style: TextStyle(
-                                                  fontSize: 25,
-                                                  color: Color.fromARGB(
-                                                      255, 89, 176, 247),
-                                                  fontFamily: "San Francisco",
-                                                  fontWeight: FontWeight.bold,
-                                                  fontStyle: FontStyle.italic),
-                                              children: [
+                                    ? SingleChildScrollView(
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(10.0),
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceAround,
+                                            children: [
+                                              Text.rich(
                                                 TextSpan(
-                                                  text:
-                                                      "/${snapshot.data!.length}",
+                                                  text: snapshot1
+                                                              .data!.length ==
+                                                          1
+                                                      ? (currentPage != 0
+                                                          ? 'Question ${currentPage}'
+                                                          : 'Question ${snapshot1.data![index].questionNumber}')
+                                                      : (currentPage != 0
+                                                          ? 'Question ${questionNumber(snapshot1.data!.length, currentPage)}'
+                                                          : 'Question ${questionNumber(snapshot1.data!.length, snapshot1.data![index].questionNumber!)}'),
                                                   style: TextStyle(
-                                                    fontSize: 20,
-                                                    color: Color.fromARGB(
-                                                        255, 89, 176, 247),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                          SizedBox(
-                                            height: 10,
-                                          ),
-                                          (widget.part == 4 || widget.part == 3)
-                                              ? Padding(
-                                                  padding:
-                                                      const EdgeInsets.only(
-                                                          left: 10, bottom: 10),
-                                                  child: AudioQuiz(
-                                                      audio: snapshot1
-                                                          .data![0].audio!,
-                                                      end: end),
-                                                )
-                                              : Container(),
-                                          widget.part == 6
-                                              ? Text(
-                                                  snapshot1.data![0].question!,
-                                                  style: TextStyle(
-                                                      fontSize: 30,
+                                                      fontSize: 25,
                                                       color: Color.fromARGB(
-                                                          255, 0, 140, 255),
+                                                          255, 89, 176, 247),
                                                       fontFamily:
                                                           "San Francisco",
                                                       fontWeight:
                                                           FontWeight.bold,
                                                       fontStyle:
                                                           FontStyle.italic),
-                                                )
-                                              : Container(),
-                                          Text(
-                                            snapshot1.data![0].paragraph!,
-                                            style: TextStyle(
-                                                fontSize: 25,
-                                                color: Color.fromARGB(
-                                                    255, 0, 140, 255),
-                                                fontFamily: "San Francisco",
-                                                fontWeight: FontWeight.bold,
-                                                fontStyle: FontStyle.italic),
+                                                ),
+                                              ),
+                                              SizedBox(
+                                                height: 10,
+                                              ),
+                                              (widget.part == 4 ||
+                                                      widget.part == 3)
+                                                  ? Padding(
+                                                      padding:
+                                                          const EdgeInsets.only(
+                                                              left: 10,
+                                                              bottom: 10),
+                                                      child: AudioQuiz(
+                                                          audio: snapshot1
+                                                              .data![0].audio!,
+                                                          end: end),
+                                                    )
+                                                  : Container(),
+                                              widget.part == 6
+                                                  ? Text(
+                                                      snapshot1
+                                                          .data![0].question!,
+                                                      style: TextStyle(
+                                                          fontSize: 30,
+                                                          color: Color.fromARGB(
+                                                              255, 0, 140, 255),
+                                                          fontFamily:
+                                                              "San Francisco",
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          fontStyle:
+                                                              FontStyle.italic),
+                                                    )
+                                                  : Container(),
+                                              Text(
+                                                snapshot1.data![0].paragraph!,
+                                                style: TextStyle(
+                                                    fontSize: 25,
+                                                    color: Color.fromARGB(
+                                                        255, 0, 140, 255),
+                                                    fontFamily: "San Francisco",
+                                                    fontWeight: FontWeight.bold,
+                                                    fontStyle:
+                                                        FontStyle.italic),
+                                              ),
+                                            ],
                                           ),
-                                        ],
+                                        ),
                                       )
                                     : const Center(
                                         child: ColorLoader(),
@@ -222,8 +235,25 @@ class _quizBodyState extends State<quizBody> {
                         controller: _pageController,
                         onPageChanged: (value) {
                           setState(() {
-                            currentPage = value;
-                            if (currentPage == snapshot.data!.length - 1) {
+                            if (value >= keepValuePage) {
+                              valueKeep = quesionNumberGroup;
+                              quesionNumberGroup =
+                                  groupAdd(snapshot.data!, quesionNumberGroup);
+                              currentPage = snapshot
+                                  .data![quesionNumberGroup].questionNumber!;
+                              keepValuePage = value;
+                            } else {
+                              valueKeep = quesionNumberGroup;
+                              quesionNumberGroup =
+                                  groupSub(snapshot.data!, quesionNumberGroup);
+                              currentPage = value +
+                                  snapshot.data![valueKeep - quesionNumberGroup]
+                                      .questionNumber!;
+                              keepValuePage = value;
+                            }
+
+                            pageview = value;
+                            if (pageview == snapshot.data!.length - 1) {
                               isCompleted = true;
                             }
                             if (widget.part == 3 ||
@@ -296,5 +326,37 @@ class _quizBodyState extends State<quizBody> {
       }
     }
     return value;
+  }
+
+  int groupAdd(List<Question> question, int valueBegin) {
+    int value = 0;
+    for (int i = valueBegin; i < question.length - 1; i++) {
+      if (question[i].groupQuestion == question[i + 1].groupQuestion) {
+        value++;
+      } else {
+        break;
+      }
+    }
+    return value + 1;
+  }
+
+  int groupSub(List<Question> question, int valueBegin) {
+    int value = 0;
+    for (int i = valueBegin - 1; i > 0; i--) {
+      if (question[i].groupQuestion == question[i - 1].groupQuestion) {
+        value++;
+      } else {
+        break;
+      }
+    }
+    return value + 1;
+  }
+
+  String questionNumber(int dataLength, int page) {
+    String a = '';
+    for (int i = 0; i < dataLength; i++) {
+      a = a + (page + i).toString() + ' ';
+    }
+    return a;
   }
 }

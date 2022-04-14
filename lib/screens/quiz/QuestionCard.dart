@@ -124,20 +124,22 @@ class _QuestionCardState extends State<QuestionCard> {
           //show list answer and check
           ...List.generate(
             options.length,
-            (index) => Option(
+            (index) => options[index] != '' ? Option(
               selectedAns: selectedAns,
               correctAns: widget.quiz.correctAnswer!,
               index: index,
               text: options[index],
-              press: () {
-                setState(() {
-                  checkAns(widget.quiz, index);
-                  widget.number(widget.quiz.correctAnswer == selectedAns);
-                  widget.isSelected(true);
-                });
-              },
+              press: selectedAns == null
+                  ? () {
+                      setState(() {
+                        checkAns(widget.quiz, index);
+                        widget.number(widget.quiz.correctAnswer == selectedAns);
+                        widget.isSelected(true);
+                      });
+                    }
+                  : () {},
               explain: explains[index],
-            ),
+            ) : Container(),
           ),
           SizedBox(
             height: 50,
