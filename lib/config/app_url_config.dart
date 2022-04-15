@@ -17,6 +17,7 @@ class AppUrl {
 
   static const String getAllQuizs = baseURL + "/getAllQuestionsByPartOfExamId";
   static const String getAllQuizsGroup = baseURL + "/getAllQuestionsByQuestionGroupByExamId";
+  static const String getAllQuizsPart = baseURL + "/getAllQuestionsByPart";
   
 
   static const String getAllLessons = baseURL + "/getAllLessons";

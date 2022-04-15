@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:toeic_learning_app/screens/home_screen.dart';
+import 'package:toeic_learning_app/screens/quiz/partQuizScreen.dart';
 import 'package:toeic_learning_app/screens/quiz/quiz_trainning.dart';
 import 'package:toeic_learning_app/screens/widgets/rounded_button.dart';
 
@@ -100,8 +101,7 @@ class _QuizScreenState extends State<QuizScreen> {
                             onTap: (() =>  Navigator.push(
           context,
           MaterialPageRoute<bool>(builder: (BuildContext context) {
-            return QuizTrainning(
-              exam: category[a]['exam'],
+            return QuizPartScreen(
               part: category[a]['part'],
             );
           }),
@@ -150,8 +150,7 @@ class _QuizScreenState extends State<QuizScreen> {
                             onTap: (() => Navigator.push(
                               context,
                               MaterialPageRoute<bool>(builder: (BuildContext context) {
-                                return QuizTrainning(
-                                  exam: category[b]['exam'],
+                                return QuizPartScreen(
                                   part: category[b]['part'],
                                 );
                               }),

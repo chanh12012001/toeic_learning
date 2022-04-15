@@ -6,6 +6,7 @@ class QuizProvider extends ChangeNotifier {
   final QuizRepository _quizRepository = QuizRepository();
   static List<Question> questions = [];
   static List<Question> questionsGroup = [];
+  static List<Question> questionPart = [];
 
   // get all quiz
   Future<List<Question>> getQuizList(examId,part) async {
@@ -16,5 +17,8 @@ class QuizProvider extends ChangeNotifier {
     questionsGroup = await _quizRepository.getQuizlistByGroup(examId,questionGroup);
     return questionsGroup;
   }
-  
+  Future<List<Question>> getQuizPartList(part) async {
+    questionPart = await _quizRepository.getQuizlistByPart(part);
+    return questionPart;
+  }
 }
