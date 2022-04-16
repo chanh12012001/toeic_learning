@@ -98,7 +98,7 @@ class _QuizPartScreenState extends State<QuizPartScreen> {
                                               ),
                                             ),
                                             Text(
-                                              "${snapshot.data!.length} ",
+                                              "${index + nextExamIndex(snapshot.data!, index)} ",
                                               style: TextStyle(
                                                 color: Colors.blue,
                                                 fontSize: 20,

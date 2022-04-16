@@ -32,10 +32,12 @@ class QuestionCard extends StatefulWidget {
   State<QuestionCard> createState() => _QuestionCardState();
 }
 
-class _QuestionCardState extends State<QuestionCard> {
+class _QuestionCardState extends State<QuestionCard> with AutomaticKeepAliveClientMixin{
   String? selectedAns;
   bool end = false;
 
+  @override
+  bool get wantKeepAlive => true;
   @override
   Widget build(BuildContext context) {
     List<String> options = [

@@ -281,6 +281,7 @@ class _quizBodyState extends State<quizBody> {
                             return snapshot1.hasData
                                 ? ListView.builder(
                                     itemCount: snapshot1.data!.length,
+                                    addAutomaticKeepAlives: true,
                                     padding: EdgeInsets.only(
                                       bottom: 10,
                                     ),
