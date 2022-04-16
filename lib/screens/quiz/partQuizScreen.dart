@@ -66,6 +66,7 @@ class _QuizPartScreenState extends State<QuizPartScreen> {
                                   },
                                   child: Container(
                                     padding: EdgeInsets.all(10),
+                                    margin: EdgeInsets.all(10),
                                     width: MediaQuery.of(context).size.width,
                                     height: 100,
                                     decoration: BoxDecoration(

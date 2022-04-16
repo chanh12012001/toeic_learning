@@ -42,6 +42,10 @@ class _quizBodyState extends State<quizBody> {
       initialPage: pageview,
       viewportFraction: 0.8,
     );
+    _pageControllerAudio = PageController(
+      initialPage: pageview,
+      viewportFraction: 0.8,
+    );
   }
 
   @override
@@ -253,7 +257,7 @@ class _quizBodyState extends State<quizBody> {
                             }
 
                             pageview = value;
-                            if (pageview == snapshot.data!.length - 1) {
+                            if (countSelected == snapshot.data!.length - 1) {
                               isCompleted = true;
                             }
                             if (widget.part == 3 ||
