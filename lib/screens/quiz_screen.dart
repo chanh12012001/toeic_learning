@@ -1,11 +1,11 @@
 import 'dart:convert';
-
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:toeic_learning_app/screens/home_screen.dart';
-import 'package:toeic_learning_app/screens/quiz/partQuizScreen.dart';
-import 'package:toeic_learning_app/screens/quiz/quiz_trainning.dart';
-import 'package:toeic_learning_app/screens/widgets/rounded_button.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
+import 'package:toeic_learning_app/models/toeic_part_model.dart';
+import 'package:toeic_learning_app/screens/widgets/toeic_questions/exam_manage/exam_list.dart';
+import 'package:toeic_learning_app/screens/widgets/toeic_questions/test_list_by_part.dart';
+import '../config/theme.dart';
+import 'widgets/toeic_questions/part_card.dart';
 
 class QuizScreen extends StatefulWidget {
   static const String routeName = '/quiz-screen';
@@ -24,14 +24,27 @@ class QuizScreen extends StatefulWidget {
 }
 
 class _QuizScreenState extends State<QuizScreen> {
-  List category = [];
+  List toeicPartsJson = [];
+  List<ToeicPart> toeicParts = [];
+  List<ToeicPart> toeicPartListening = [];
+  List<ToeicPart> toeicPartReading = [];
+
   _initData() async {
     await DefaultAssetBundle.of(context)
-        .loadString("assets/json/category.json")
+        .loadString("assets/json/toeic-part.json")
         .then((value) {
-          setState(() {
-            category = json.decode(value);
-          });
+      setState(() {
+        toeicPartsJson = json.decode(value);
+        toeicParts =
+            toeicPartsJson.map((part) => ToeicPart.fromJson(part)).toList();
+      });
+      for (var part in toeicParts) {
+        if (part.part! > 4) {
+          toeicPartReading.add(part);
+        } else {
+          toeicPartListening.add(part);
+        }
+      }
     });
   }
 
@@ -40,171 +53,133 @@ class _QuizScreenState extends State<QuizScreen> {
     super.initState();
     _initData();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 223, 247, 253),
-      body: Container(
-        padding: const EdgeInsets.only(top: 70, left: 30, right: 30),
-        child: Column(children: [
-          Row(
-            children: [
-              Text(
-                "Quiz",
-                style: TextStyle(
-                    fontSize: 30,
-                    color: Colors.black,
-                    fontWeight: FontWeight.w700),
-              ),
-              Expanded(child: Container()),
-              InkWell(
-                onTap: () {
-                  Navigator.pushNamed(context, HomeScreen.routeName);
-                },
-                child: Icon(
-                  Icons.logout,
-                  size: 20,
-                  color: Colors.black,
-                ),
-              ),
-            ],
+        backgroundColor: whiteColor,
+        appBar: AppBar(
+          iconTheme: IconThemeData(color: blackCoffeeColor),
+          elevation: 0,
+          backgroundColor: whiteColor,
+          title: Text(
+            'Practice',
+            style: TextStyle(color: blackColor),
           ),
-          SizedBox(
-            height: 30,
-          ),
-           Row(
-              children: [
-                Text(
-                  "Loại bài",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      fontSize: 25,
-                      fontWeight: FontWeight.w500,
-                      color: Colors.black),
-                ),
-              ],
+          actions: [
+            IconButton(
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute<void>(
+                  builder: (BuildContext context) {
+                    return const ExamsList();
+                  },
+                ));
+              },
+              icon: const Icon(Icons.list),
             ),
-            Expanded(
-              child: OverflowBox(
-                maxWidth: MediaQuery.of(context).size.width,
-                child: MediaQuery.removePadding(
-                  removeTop: true,
-                  context: context,
-                  child: ListView.builder(
-                    itemCount: (category.length.toDouble() / 2).toInt(),
-                    itemBuilder: (_, i) {
-                      int a = 2 * i;
-                      int b = 2 * i + 1;
-                      return Row(
-                        children: [
-                          InkWell(
-                            onTap: (() =>  Navigator.push(
-          context,
-          MaterialPageRoute<bool>(builder: (BuildContext context) {
-            return QuizPartScreen(
-              part: category[a]['part'],
-            );
-          }),
-        )),
-                            child: Container(
-                              height: 220,
-                              width: (MediaQuery.of(context).size.width-90)/2,
-                              padding: EdgeInsets.only(
-                                bottom: 15,
-                              ),
-                              margin: EdgeInsets.only(left: 30,bottom: 10, top: 10),
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(15),
-                                image: DecorationImage(
-                                  image: AssetImage(category[a]['img']),
-                                ),
-                                boxShadow: [
-                                  BoxShadow(
-                                    blurRadius: 5,
-                                    offset: Offset(5, 5),
-                                    color: Color.fromARGB(255, 58, 112, 206)
-                                        .withOpacity(0.1),
-                                  ),
-                                  BoxShadow(
-                                    blurRadius: 3,
-                                    offset: Offset(-5, -5),
-                                    color: Color.fromARGB(255, 58, 112, 206)
-                                        .withOpacity(0.1),
-                                  ),
-                                ],
-                              ),
-                              child: Center(
-                                child: Align(
-                                  alignment: Alignment.bottomCenter,
-                                  child: Text(
-                                    category[a]['title'],
-                                    style:
-                                        TextStyle(fontSize: 25, color: Colors.blue, fontWeight: FontWeight.bold),
-                                  ),
-                                ),
-                              ),
+          ],
+        ),
+        body: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.all(15),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text(
+                  "Practice Listening",
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                Flexible(
+                  child: GridView.builder(
+                    physics: const NeverScrollableScrollPhysics(),
+                    gridDelegate:
+                        const SliverGridDelegateWithMaxCrossAxisExtent(
+                      maxCrossAxisExtent: 200,
+                      childAspectRatio: 3 / 2.3,
+                      crossAxisSpacing: 10,
+                      mainAxisSpacing: 10,
+                    ),
+                    itemCount: toeicPartListening.length,
+                    itemBuilder: (context, index) {
+                      ToeicPart part = toeicPartListening[index];
+                      return AnimationConfiguration.staggeredList(
+                        position: index,
+                        child: SlideAnimation(
+                          child: FadeInAnimation(
+                            child: GestureDetector(
+                              onTap: () {
+                                Navigator.push(context, MaterialPageRoute<void>(
+                                  builder: (BuildContext context) {
+                                    return TestListByPart(
+                                      part: part,
+                                    );
+                                  },
+                                ));
+                              },
+                              child: PartCard(part: part),
                             ),
                           ),
-                          InkWell(
-                            onTap: (() => Navigator.push(
-                              context,
-                              MaterialPageRoute<bool>(builder: (BuildContext context) {
-                                return QuizPartScreen(
-                                  part: category[b]['part'],
-                                );
-                              }),
-                            )),
-                            child: Container(
-                              height: 220,
-                              width: (MediaQuery.of(context).size.width-90)/2,
-                              padding: EdgeInsets.only(
-                                bottom: 15,
-                              ),
-                               margin: EdgeInsets.only(left: 30,bottom: 10,  top: 10),
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(15),
-                                image: DecorationImage(
-                                  image: AssetImage(category[b]['img']),
-                                ),
-                                boxShadow: [
-                                  BoxShadow(
-                                    blurRadius: 3,
-                                    offset: Offset(5, 5),
-                                    color: Color.fromARGB(255, 58, 112, 206)
-                                        .withOpacity(0.1),
-                                  ),
-                                  BoxShadow(
-                                    blurRadius: 3,
-                                    offset: Offset(-5, -5),
-                                    color: Color.fromARGB(255, 58, 112, 206)
-                                        .withOpacity(0.1),
-                                  ),
-                                ],
-                              ),
-                              child: Center(
-                                child: Align(
-                                  alignment: Alignment.bottomCenter,
-                                  child: Text(
-                                    category[b]['title'],
-                                    style:
-                                        TextStyle(fontSize: 25, color: Colors.blue, fontWeight: FontWeight.bold),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
+                        ),
                       );
                     },
                   ),
                 ),
-              ),
+                const SizedBox(
+                  height: 10,
+                ),
+                const Text(
+                  "Practice Reading",
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                Flexible(
+                  child: GridView.builder(
+                    // physics: const NeverScrollableScrollPhysics(),
+                    gridDelegate:
+                        const SliverGridDelegateWithMaxCrossAxisExtent(
+                      maxCrossAxisExtent: 200,
+                      childAspectRatio: 3 / 2.3,
+                      crossAxisSpacing: 10,
+                      mainAxisSpacing: 10,
+                    ),
+                    itemCount: toeicPartReading.length,
+                    itemBuilder: (context, index) {
+                      ToeicPart part = toeicPartReading[index];
+                      return AnimationConfiguration.staggeredList(
+                        position: index,
+                        child: SlideAnimation(
+                          child: FadeInAnimation(
+                            child: GestureDetector(
+                              onTap: () {
+                                Navigator.push(context, MaterialPageRoute<void>(
+                                  builder: (BuildContext context) {
+                                    return TestListByPart(part: part);
+                                  },
+                                ));
+                              },
+                              child: PartCard(part: part),
+                            ),
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                ),
+                // Expanded(child: Container())
+              ],
             ),
-          
-        ]),
-      ),
-    );
+          ),
+        ));
   }
 }

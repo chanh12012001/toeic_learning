@@ -1,0 +1,37 @@
+[
+    {
+        "part": 1,
+        "img":"assets/images/toeic/part1.png",
+        "title": "Photographs"
+    },
+    {
+        "part": 2,
+        "img":"assets/images/toeic/part2.png",
+        "title": "Question and response"    
+    },
+    {
+        "part": 3,
+        "img":"assets/images/toeic/part3.png",
+        "title": "Conversations"
+    },
+    {
+        "part": 4,
+        "img":"assets/images/toeic/part4.png",
+        "title": "Short talks"
+    },
+    {
+        "part": 5,
+        "img":"assets/images/toeic/part5.png",
+        "title": "Incomplete sentences"
+    },
+    {
+        "part": 6,
+        "img":"assets/images/toeic/part6.png",
+        "title": "Text completion"  
+    },
+    {
+        "part": 7,
+        "img":"assets/images/toeic/part7.png",
+        "title": "Reading comprehension"
+    }
+]
