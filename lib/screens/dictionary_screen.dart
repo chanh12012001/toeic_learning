@@ -116,7 +116,10 @@ class _DictionaryScreenState extends State<DictionaryScreen> {
           builder: (BuildContext ctx, AsyncSnapshot snapshot) {
             if (snapshot.data == null) {
               return Center(
-                child: Text("Enter a search word"),
+                child: Text(
+                  "Enter a search word",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
+                ),
               );
             }
 
@@ -147,16 +150,22 @@ class _DictionaryScreenState extends State<DictionaryScreen> {
                                 backgroundImage: NetworkImage(snapshot
                                     .data["definitions"][index]["image_url"]),
                               ),
-                        title: Text(_controller.text.trim() +
-                            "(" +
-                            snapshot.data["definitions"][index]["type"] +
-                            ")"),
+                        title: Text(
+                          _controller.text.trim() +
+                              "(" +
+                              snapshot.data["definitions"][index]["type"] +
+                              ")",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 20),
+                        ),
                       ),
                     ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
-                          snapshot.data["definitions"][index]["definition"]),
+                        snapshot.data["definitions"][index]["definition"],
+                        style: TextStyle(fontSize: 15),
+                      ),
                     )
                   ],
                 );
