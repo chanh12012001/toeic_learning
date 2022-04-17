@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'package:toeic_learning_app/models/quiz_model.dart';
 import '../config/app_url_config.dart';
@@ -24,22 +23,6 @@ class QuizRepository {
       headers: {
         'Content-Type': 'application/json',
         'groupquestion': groupquestion.toString()
-      },
-    );
-    if (response.statusCode == 200) {
-      List jsonResponse = json.decode(response.body)['questions'];
-      return jsonResponse.map((quiz) => Question.fromJson(quiz)).toList();
-    } else {
-      throw Exception('Failed to load quiz from the Internet');
-    }
-  }
-
-  Future<List<Question>> getQuizlistByPart(part) async {
-    Response response = await get(
-      Uri.parse(AppUrl.getAllQuizsPart),
-      headers: {
-        'Content-Type': 'application/json',
-        'part': part.toString()
       },
     );
     if (response.statusCode == 200) {
