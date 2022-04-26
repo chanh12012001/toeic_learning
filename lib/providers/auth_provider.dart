@@ -1,7 +1,9 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
+import 'package:toeic_learning_app/repositories/auth_repository.dart';
 import '../config/app_url_config.dart';
 import '../models/user_model.dart';
 import '../preferences/user_preference.dart';
@@ -27,6 +29,8 @@ enum Status {
 }
 
 class AuthProvider with ChangeNotifier {
+  AuthRepository authRepository = AuthRepository();
+
   Status _loggedInStatus = Status.notLoggedIn;
   Status _sentOtpStatus = Status.notSentOtp;
   Status _verifyOtpStatus = Status.notVerifyOTP;
@@ -243,5 +247,19 @@ class AuthProvider with ChangeNotifier {
       };
     }
     return result;
+  }
+
+  Future<User> updateAvatar(userId, File imageFile) async {
+    User user = await authRepository.updateAvatar(userId, imageFile);
+    UserPreferences().saveUser(user);
+    notifyListeners();
+    return user;
+  }
+
+  Future<User> updateUserInfo(userId, name, sex, email) async {
+    User user = await authRepository.updateUserInfo(userId, name, sex, email);
+    UserPreferences().saveUser(user);
+    notifyListeners();
+    return user;
   }
 }

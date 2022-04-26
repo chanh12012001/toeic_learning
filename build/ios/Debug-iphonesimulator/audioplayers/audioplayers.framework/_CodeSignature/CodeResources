@@ -34,7 +34,7 @@
 		</data>
 		<key>Modules/audioplayers.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		rspMz46GX4yyXPj8X3m1SisQNIc=
+		JygOtnYypk6XCng3BkMs7se/hhg=
 		</data>
 		<key>Modules/audioplayers.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
@@ -42,7 +42,7 @@
 		</data>
 		<key>Modules/audioplayers.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		ePNP9KwtTVill1QuAq8dNjPSdLI=
+		mhmHVwNK64Jqdcza9LOWV5BFEoM=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -121,11 +121,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			rspMz46GX4yyXPj8X3m1SisQNIc=
+			JygOtnYypk6XCng3BkMs7se/hhg=
 			</data>
 			<key>hash2</key>
 			<data>
-			mGYa4x1jIXtNzYU97vIiD6H3w04CVqlgSEQuZH9u3QA=
+			igepMxGgzc8fZ8Shq53hUwLciL1W4HL+WMeSaqLv+2g=
 			</data>
 		</dict>
 		<key>Modules/audioplayers.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
@@ -143,11 +143,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			ePNP9KwtTVill1QuAq8dNjPSdLI=
+			mhmHVwNK64Jqdcza9LOWV5BFEoM=
 			</data>
 			<key>hash2</key>
 			<data>
-			v2N/UzqRraebQb3WGui/YQalJYZd0fDW/tTNQ4JWhKA=
+			/M6+HQqu1QaQCMr6eI5auUbOlcwNycQk2/+anFKu08k=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

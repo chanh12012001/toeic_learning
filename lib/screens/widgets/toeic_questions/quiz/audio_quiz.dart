@@ -13,7 +13,7 @@ class AudioQuiz extends StatefulWidget {
 }
 
 class _AudioQuizState extends State<AudioQuiz> {
-  AudioPlayer _audioPlayer = AudioPlayer();
+  final AudioPlayer _audioPlayer = AudioPlayer();
   bool _isPlaying = false;
   String currentTime = "00:00";
   String completeTime = "00:00";
@@ -79,7 +79,7 @@ class _AudioQuizState extends State<AudioQuiz> {
             },
             icon: Icon(_isPlaying ? Icons.pause : Icons.play_arrow),
           ),
-          SizedBox(
+          const SizedBox(
             width: 16,
           ),
           IconButton(
@@ -90,16 +90,16 @@ class _AudioQuizState extends State<AudioQuiz> {
                 currentTime = "00:00";
               });
             },
-            icon: Icon(Icons.stop),
+            icon: const Icon(Icons.stop),
           ),
           Text(
             currentTime,
-            style: TextStyle(fontWeight: FontWeight.w700),
+            style: const TextStyle(fontWeight: FontWeight.w700),
           ),
-          Text("|"),
+          const Text("|"),
           Text(
             completeTime,
-            style: TextStyle(fontWeight: FontWeight.w300),
+            style: const TextStyle(fontWeight: FontWeight.w300),
           ),
         ],
       ),

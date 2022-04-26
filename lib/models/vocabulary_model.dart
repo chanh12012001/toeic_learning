@@ -1,5 +1,5 @@
 class Vocabulary {
-  int? id;
+  String? id;
   String? name;
   String? definition;
   String? imageUrl;

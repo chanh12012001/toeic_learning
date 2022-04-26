@@ -13,8 +13,10 @@ class UserPreferences {
     prefs.setString("dateOfBirth", user.dateOfBirth!);
     prefs.setString("sex", user.sex!);
     prefs.setString("email", user.email!);
-    prefs.setString("token", user.token!);
+    if (user.token != null) prefs.setString("token", user.token!);
     prefs.setString("authorization", user.authorization!);
+    prefs.setString("avatarUrl", user.avatarUrl!);
+    prefs.setString("cloudinaryId", user.cloudinaryId!);
     return true;
   }
 
@@ -29,6 +31,8 @@ class UserPreferences {
     String? email = prefs.getString("email");
     String? token = prefs.getString("token");
     String? authorization = prefs.getString("authorization");
+    String? avatarUrl = prefs.getString("avatarUrl");
+    String? cloudinaryId = prefs.getString("cloudinaryId");
 
     return User(
       userId: userId,
@@ -39,6 +43,8 @@ class UserPreferences {
       email: email,
       token: token,
       authorization: authorization,
+      avatarUrl: avatarUrl,
+      cloudinaryId: cloudinaryId,
     );
   }
 
@@ -51,6 +57,8 @@ class UserPreferences {
     prefs.remove("dateOfBirth");
     prefs.remove("sex");
     prefs.remove("email");
+    prefs.remove("token");
+    prefs.remove("authorization");
     prefs.remove("token");
     prefs.remove("authorization");
   }

@@ -7,6 +7,8 @@ class User {
   String? email;
   String? token;
   String? authorization;
+  String? avatarUrl;
+  String? cloudinaryId;
 
   User({
     this.userId,
@@ -17,6 +19,8 @@ class User {
     this.email,
     this.token,
     this.authorization,
+    this.avatarUrl,
+    this.cloudinaryId,
   });
 
   factory User.fromJson(Map<String, dynamic> responseData) {
@@ -28,6 +32,8 @@ class User {
         sex: responseData['sex'],
         email: responseData['email'],
         token: responseData['token'],
-        authorization: responseData['authorization']);
+        authorization: responseData['authorization'],
+        avatarUrl: responseData['avatarUrl'],
+        cloudinaryId: responseData['cloudinaryId']);
   }
 }

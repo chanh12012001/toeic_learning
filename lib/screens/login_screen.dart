@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
+import 'package:toeic_learning_app/preferences/notification_preference.dart';
 import 'package:toeic_learning_app/screens/screens.dart';
 import '../config/theme.dart';
 import '../models/user_model.dart';
@@ -31,6 +33,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final passwordController = TextEditingController();
   ToastService toast = ToastService();
   LectureTypePreferences lectureTypePreferences = LectureTypePreferences();
+  final String _time = DateFormat('HH:mm').format(DateTime.now()).toString();
 
   @override
   Widget build(BuildContext context) {
@@ -55,6 +58,8 @@ class _LoginScreenState extends State<LoginScreen> {
           backgroundColor: Colors.redAccent,
         );
       } else {
+        StateNotificationPreferences stateNotificationPreferences =
+            StateNotificationPreferences();
         final Future<Map<String, dynamic>> successfulMessage =
             auth.login(phone, pass);
 
@@ -64,10 +69,19 @@ class _LoginScreenState extends State<LoginScreen> {
                 .saveGrammarLectureId(await _getLectureTypeIdByName('grammar'));
             lectureTypePreferences.saveListeningLectureId(
                 await _getLectureTypeIdByName('listening'));
+            stateNotificationPreferences.saveStateNotification(false);
+            stateNotificationPreferences.saveNotificationTime(_time);
+
             User user = response['user'];
             Provider.of<UserProvider>(context, listen: false).setUser(user);
-            Navigator.pushNamedAndRemoveUntil(
-                context, HomeScreen.routeName, (route) => false);
+
+            Navigator.pushAndRemoveUntil(context, MaterialPageRoute<void>(
+              builder: (BuildContext context) {
+                return HomeScreen(
+                  user: user,
+                );
+              },
+            ), (route) => false);
             toast.showToast(
               context: context,
               message: 'Đăng nhập thành công',
@@ -95,7 +109,7 @@ class _LoginScreenState extends State<LoginScreen> {
             children: <Widget>[
               Image.asset(
                 'assets/images/text_logo.png',
-                width: MediaQuery.of(context).size.width / 3.3,
+                width: MediaQuery.of(context).size.width / 2,
               ),
               Image.asset(
                 "assets/images/book.gif",
