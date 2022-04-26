@@ -7,3 +7,4 @@ export 'input_password_screen.dart';
 export 'forgot_password_screen.dart';
 export 'lecture_screen.dart';
 export 'vocabulary_lesson_screen.dart';
+export 'blog_screen.dart';

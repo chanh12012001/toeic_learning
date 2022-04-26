@@ -4,7 +4,7 @@ import 'package:toeic_learning_app/models/vocabulary_model.dart';
 import '../config/app_url_config.dart';
 
 class VocabularyRepository {
-  Future<List<Vocabulary>> getVocabularyList(id) async {
+  Future<List<Vocabulary>> getVocabularyList(String id) async {
     Response response = await get(
       Uri.parse(AppUrl.getAllVocabularies + id),
       headers: {
@@ -13,7 +13,7 @@ class VocabularyRepository {
     );
 
     if (response.statusCode == 200) {
-      List jsonResponse = json.decode(response.body);
+      List jsonResponse = json.decode(response.body)['vocabularies'];
       return jsonResponse.map((word) => Vocabulary.fromJson(word)).toList();
     } else {
       throw Exception('Failed to load vocabulary from the Internet');

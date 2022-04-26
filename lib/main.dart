@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:toeic_learning_app/providers/blog_provider.dart';
 import 'package:toeic_learning_app/providers/exam_provider.dart';
 import 'package:toeic_learning_app/providers/qa_provider.dart';
+import 'package:toeic_learning_app/providers/feedback_provider.dart';
 import 'package:toeic_learning_app/providers/quiz_provider.dart';
+import 'package:toeic_learning_app/providers/terms_of_use_provider.dart';
 import 'package:toeic_learning_app/providers/video_provider.dart';
 import 'package:toeic_learning_app/providers/vocabulary_lesson_provider.dart';
 import 'package:toeic_learning_app/providers/vocabulary_provider.dart';
@@ -37,13 +40,17 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => QuizProvider()),
         ChangeNotifierProvider(create: (_) => ExamProvider()),
         ChangeNotifierProvider(create: (_) => QAProvider()),
+        ChangeNotifierProvider(create: (_) => BlogProvider()),
+        ChangeNotifierProvider(create: (_) => TermsOfUseProvider()),
+        ChangeNotifierProvider(create: (_) => FeedbackProvider()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Personal Notebook',
         theme: theme(),
+        routes: {BlogScreen.routeName: (context) => const BlogScreen()},
         onGenerateRoute: AppRouter.onGenerateRoute,
-        initialRoute: LoginScreen.routeName,
+        initialRoute: SplashScreen.routeName,
       ),
     );
   }

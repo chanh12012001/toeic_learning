@@ -109,6 +109,7 @@ class _VocabularyScreenState extends State<VocabularyScreen> {
             if (snapshot.hasError) {
               return Text("${snapshot.error}");
             }
+            print(snapshot.data);
             return snapshot.hasData
                 ? isFlashCardScreen
                     ? PageViewVocabularyCard(vocabularies: snapshot.data!)

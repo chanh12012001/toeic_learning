@@ -65,7 +65,7 @@ class _DictionaryScreenState extends State<DictionaryScreen> {
       appBar: AppBar(
         title: const Text("Dictionary"),
         bottom: PreferredSize(
-          preferredSize: Size.fromHeight(48.0),
+          preferredSize: const Size.fromHeight(48.0),
           child: Row(
             children: <Widget>[
               Expanded(
@@ -90,14 +90,14 @@ class _DictionaryScreenState extends State<DictionaryScreen> {
                       border: InputBorder.none,
                       suffixIcon: IconButton(
                         onPressed: _controller.clear,
-                        icon: Icon(Icons.clear),
+                        icon: const Icon(Icons.clear),
                       ),
                     ),
                   ),
                 ),
               ),
               IconButton(
-                icon: Icon(
+                icon: const Icon(
                   Icons.search,
                   color: Colors.white,
                 ),
@@ -115,7 +115,7 @@ class _DictionaryScreenState extends State<DictionaryScreen> {
           stream: _stream,
           builder: (BuildContext ctx, AsyncSnapshot snapshot) {
             if (snapshot.data == null) {
-              return Center(
+              return const Center(
                 child: Text(
                   "Enter a search word",
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
@@ -124,12 +124,12 @@ class _DictionaryScreenState extends State<DictionaryScreen> {
             }
 
             if (snapshot.data == "waiting") {
-              return Center(
+              return const Center(
                 child: CircularProgressIndicator(),
               );
             }
             if (snapshot.data == "overTime") {
-              return Center(
+              return const Center(
                 child: Text("Please enter another words"),
               );
             }
@@ -155,7 +155,7 @@ class _DictionaryScreenState extends State<DictionaryScreen> {
                               "(" +
                               snapshot.data["definitions"][index]["type"] +
                               ")",
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 20),
                         ),
                       ),
@@ -164,7 +164,7 @@ class _DictionaryScreenState extends State<DictionaryScreen> {
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
                         snapshot.data["definitions"][index]["definition"],
-                        style: TextStyle(fontSize: 15),
+                        style: const TextStyle(fontSize: 15),
                       ),
                     )
                   ],

@@ -21,8 +21,8 @@ class _ScoreScreenState extends State<ScoreScreen> {
           Center(
             child: Column(
               children: [
-                Spacer(),
-                Text(
+                const Spacer(),
+                const Text(
                   "Score",
                   style: TextStyle(
                     fontSize: 50,
@@ -30,17 +30,17 @@ class _ScoreScreenState extends State<ScoreScreen> {
                     color: Color.fromARGB(255, 179, 176, 176),
                   ),
                 ),
-                Spacer(),
+                const Spacer(),
                 (widget.numberOfCorrectAns != null && widget.questions != null)
                     ? Text(
                         "${widget.numberOfCorrectAns! * 10}/${widget.questions!.length * 10}",
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 50,
                           fontWeight: FontWeight.bold,
                           color: Color.fromARGB(255, 179, 176, 176),
                         ),
                       )
-                    : Text(
+                    : const Text(
                         "You don't finish your test.\n Try again. \nTry your best!",
                         style: TextStyle(
                           fontSize: 40,
@@ -49,7 +49,7 @@ class _ScoreScreenState extends State<ScoreScreen> {
                         ),
                         textAlign: TextAlign.center,
                       ),
-                Spacer(),
+                const Spacer(),
                 InkWell(
                   onTap: () {
                     //resert Quiz
@@ -59,9 +59,9 @@ class _ScoreScreenState extends State<ScoreScreen> {
                   child: Container(
                     width: double.infinity,
                     alignment: Alignment.center,
-                    padding: EdgeInsets.all(15),
+                    padding: const EdgeInsets.all(15),
                     decoration: BoxDecoration(
-                      gradient: LinearGradient(
+                      gradient: const LinearGradient(
                         begin: Alignment.bottomLeft,
                         end: Alignment.topRight,
                         colors: [
@@ -71,13 +71,13 @@ class _ScoreScreenState extends State<ScoreScreen> {
                       ),
                       borderRadius: BorderRadius.circular(10),
                     ),
-                    child: Text(
+                    child: const Text(
                       "Finished",
                       style: TextStyle(fontSize: 18, color: Colors.white),
                     ),
                   ),
                 ),
-                Spacer(),
+                const Spacer(),
               ],
             ),
           ),

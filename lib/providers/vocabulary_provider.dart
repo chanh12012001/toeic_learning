@@ -7,9 +7,8 @@ class VocabularyProvider extends ChangeNotifier {
   static List<Vocabulary> vocabularies = [];
 
   // get all lessons
-  Future<List<Vocabulary>> getVocabularyList(id) async {
+  Future<List<Vocabulary>> getVocabularyList(String id) async {
     vocabularies = await _vocabularyRepository.getVocabularyList(id);
-    notifyListeners();
     return vocabularies;
   }
 }

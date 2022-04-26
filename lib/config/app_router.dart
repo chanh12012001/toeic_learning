@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:toeic_learning_app/screens/QA_screen.dart';
 import 'package:toeic_learning_app/screens/dictionary_screen.dart';
 import 'package:toeic_learning_app/screens/quiz_screen.dart';
-import 'package:toeic_learning_app/screens/widgets/lecture/video_trainning.dart';
 import '../screens/screens.dart';
 
 class AppRouter {
@@ -10,8 +9,8 @@ class AppRouter {
     switch (settings.name) {
       case SplashScreen.routeName:
         return SplashScreen.route();
-      case HomeScreen.routeName:
-        return HomeScreen.route();
+      // case HomeScreen.routeName:
+      //   return HomeScreen.route();
       case LoginScreen.routeName:
         return LoginScreen.route();
       case RegisterScreen.routeName:
@@ -32,6 +31,8 @@ class AppRouter {
         return DictionaryScreen.route();
       case QAScreen.routeName:
         return QAScreen.route();
+      // case BlogScreen.routeName:
+      //   return BlogScreen.route();
       default:
         return _errorRoute();
     }

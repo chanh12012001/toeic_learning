@@ -10,15 +10,15 @@
 		</data>
 		<key>flutter_assets/AssetManifest.json</key>
 		<data>
-		3Ys9K5hGDD9Tw0iebP5CMOu3JVo=
+		UiJeyQvSmU3Ak/O80xF5lBxiqIE=
 		</data>
 		<key>flutter_assets/FontManifest.json</key>
 		<data>
-		vKJkVIcw+LGHFnKJGwrQwCREv68=
+		HuqT/dgvrTHOMum5Qo5BXfxzfaM=
 		</data>
 		<key>flutter_assets/NOTICES.Z</key>
 		<data>
-		Fd6SaLLDqVMGPWilbWcIGPPXV9c=
+		S2/OU7vHIwbv+R7lKYtd8tgT3aE=
 		</data>
 		<key>flutter_assets/assets/icons/book.png</key>
 		<data>
@@ -44,6 +44,10 @@
 		<data>
 		1mNQtR8J3g8mRx3So8R0GPIHU2c=
 		</data>
+		<key>flutter_assets/assets/images/banner.png</key>
+		<data>
+		VTitxwvvZTWL8A1JSJfs3QxgDmE=
+		</data>
 		<key>flutter_assets/assets/images/bgBanner.png</key>
 		<data>
 		4k8uBoFCVPm30ZEuq5xl1rgasSI=
@@ -67,6 +71,10 @@
 		<key>flutter_assets/assets/images/forgot_password.png</key>
 		<data>
 		s+2sgXoqQdyxQlV2hUeSgrBfpB4=
+		</data>
+		<key>flutter_assets/assets/images/lecture.png</key>
+		<data>
+		6S54B0zzveM7bo08MbsALvz9/+c=
 		</data>
 		<key>flutter_assets/assets/images/login_bottom.png</key>
 		<data>
@@ -104,6 +112,10 @@
 		<data>
 		4LsifxqJlRmGi+iyRu7kT7WLPt4=
 		</data>
+		<key>flutter_assets/assets/images/practice.png</key>
+		<data>
+		1bh+1oeSWu9oX+XjhnlBb8vyLUU=
+		</data>
 		<key>flutter_assets/assets/images/signup.png</key>
 		<data>
 		+eaS6lB+1u23e3O5ScNs9cvcs7A=
@@ -118,7 +130,7 @@
 		</data>
 		<key>flutter_assets/assets/images/text_logo.png</key>
 		<data>
-		V85aiC7rpkwnCvqM4MtKB1J4o5g=
+		QkTkzOml83FlqMhK1N1TTTYGlfU=
 		</data>
 		<key>flutter_assets/assets/images/the_world.png</key>
 		<data>
@@ -156,6 +168,14 @@
 		<data>
 		bmX5dVZinDyYGuh061bL1UUo1QQ=
 		</data>
+		<key>flutter_assets/assets/images/translate.png</key>
+		<data>
+		du0DN9llNS5gsgKQexZPAP6E/EA=
+		</data>
+		<key>flutter_assets/assets/images/vocabulary.png</key>
+		<data>
+		PVLFOkjdE8bDe7BR6Lff69RV1K8=
+		</data>
 		<key>flutter_assets/assets/images/work.jpg</key>
 		<data>
 		6s1KivhF0V0cNwe8tCihBANpwUI=
@@ -182,7 +202,7 @@
 		</data>
 		<key>flutter_assets/kernel_blob.bin</key>
 		<data>
-		BvUj7ky35mB4US7GstZAC+ebdHc=
+		jIBNQIYAtU+o2C31nsczKkU3qkE=
 		</data>
 		<key>flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf</key>
 		<data>
@@ -195,6 +215,18 @@
 		<key>flutter_assets/packages/flutter_inappwebview/t_rex_runner/t-rex.html</key>
 		<data>
 		60RUAYYoUnETCwVvpgmbGYgxn8Q=
+		</data>
+		<key>flutter_assets/packages/font_awesome_flutter/lib/fonts/fa-brands-400.ttf</key>
+		<data>
+		6u0UYAaZAG/nCCXCnZ2knXOYbF8=
+		</data>
+		<key>flutter_assets/packages/font_awesome_flutter/lib/fonts/fa-regular-400.ttf</key>
+		<data>
+		Nv0pIhuroURnNNlJzvht1cjo/8k=
+		</data>
+		<key>flutter_assets/packages/font_awesome_flutter/lib/fonts/fa-solid-900.ttf</key>
+		<data>
+		ZZBP0NxLS0FpDnRGkYi6CqkYiuk=
 		</data>
 		<key>flutter_assets/packages/youtube_player_flutter/assets/speedometer.webp</key>
 		<data>
@@ -211,21 +243,21 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			KYnbBXx3S0Ijiotltq+Fy2m+KVO/M20Nxm7Cvkorn2s=
+			nOnmx2A2jsNy8j+HPPk6QBx70Dc7mRCrXhNSKAPX4rQ=
 			</data>
 		</dict>
 		<key>flutter_assets/FontManifest.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			zX4DZFvESy3Ue3y2JvUcTsv1Whl6t3JBYotHrBZfviE=
+			LNlBG1QOXG4VrGVSOjYBvuZorsqRBOHeE2/DSzqRJ3E=
 			</data>
 		</dict>
 		<key>flutter_assets/NOTICES.Z</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			1VuBCr+HKYZbFwQHdBuO2c4+Cpj+6Fd/J6v5laN2gKI=
+			6prphKZAGH5SNxiFQLYcs7wbuLZoAXLNznTFQMlNmh8=
 			</data>
 		</dict>
 		<key>flutter_assets/assets/icons/book.png</key>
@@ -261,6 +293,13 @@
 			<key>hash2</key>
 			<data>
 			HpiTpUM1NoDbO0i3SScvm8MszcUlPKNsIrBNw+8GfAY=
+			</data>
+		</dict>
+		<key>flutter_assets/assets/images/banner.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			0lbrWjPx3icdBlOlY06CTkASxU6fmLgxDGoGdaz1AA4=
 			</data>
 		</dict>
 		<key>flutter_assets/assets/images/bgBanner.png</key>
@@ -303,6 +342,13 @@
 			<key>hash2</key>
 			<data>
 			MghAWh/A1GRwTEEUFRh2W06stzFQ4npDf1qpuCtm1s8=
+			</data>
+		</dict>
+		<key>flutter_assets/assets/images/lecture.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			Tbj41AvE0gdZF75okyFVDdAJCAD89rQwCHpNnskCgXc=
 			</data>
 		</dict>
 		<key>flutter_assets/assets/images/login_bottom.png</key>
@@ -368,6 +414,13 @@
 			/9azxBqM3nmXRCIIIYhIDEKJLajHtOVA40Qua0dhhbk=
 			</data>
 		</dict>
+		<key>flutter_assets/assets/images/practice.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			jK19n+5TpIKXrDarayFJXXE3mYBjScLaTWDX3hQjbeY=
+			</data>
+		</dict>
 		<key>flutter_assets/assets/images/signup.png</key>
 		<dict>
 			<key>hash2</key>
@@ -393,7 +446,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			gL1Vrln8/Qj4ITJU2MIFxcyNdtcbYm9OK1kG4yPe7SA=
+			872hLuFtOOfhT9Oohpzxy5Hx16fGJUrj8LYa0UJThcI=
 			</data>
 		</dict>
 		<key>flutter_assets/assets/images/the_world.png</key>
@@ -459,6 +512,20 @@
 			OguxLVLXGM+r5bq0lqWYQTqF6xmcL5nxj8zshWeGdTM=
 			</data>
 		</dict>
+		<key>flutter_assets/assets/images/translate.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			nrsMSctr325BHuPoCywjIs+cuva3bs+uzxu5gBUkzVs=
+			</data>
+		</dict>
+		<key>flutter_assets/assets/images/vocabulary.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			vDFPl460nLJlvLXNUZI15KheSTE5s9dmA12uEFnKZig=
+			</data>
+		</dict>
 		<key>flutter_assets/assets/images/work.jpg</key>
 		<dict>
 			<key>hash2</key>
@@ -505,7 +572,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			BKfJ4m67Oe28xTRh6yR41lMDV2yaVbne7WufMwn3XgY=
+			UBbUikFdmyjLP/KtRPiiSJE8DJKbkDd494CZaHbzSxE=
 			</data>
 		</dict>
 		<key>flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf</key>
@@ -527,6 +594,27 @@
 			<key>hash2</key>
 			<data>
 			3HLPwfHSpQE7ud40+MrPXiblQtfXE/y+CbhltKrKbd8=
+			</data>
+		</dict>
+		<key>flutter_assets/packages/font_awesome_flutter/lib/fonts/fa-brands-400.ttf</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			Hk/pANBd4RABEotLzWFTP1veUAH9hYk4FMbzXtmffR0=
+			</data>
+		</dict>
+		<key>flutter_assets/packages/font_awesome_flutter/lib/fonts/fa-regular-400.ttf</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			zp4vJEJr1wnjqkl6TMW9pgbE/lE1mTAV0bUje+itGdg=
+			</data>
+		</dict>
+		<key>flutter_assets/packages/font_awesome_flutter/lib/fonts/fa-solid-900.ttf</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			kBTU+CzwK0WehA3WAbgZLiyXARfdq0hH4bn+D8fa/Fg=
 			</data>
 		</dict>
 		<key>flutter_assets/packages/youtube_player_flutter/assets/speedometer.webp</key>

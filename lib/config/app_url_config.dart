@@ -6,6 +6,8 @@ class AppUrl {
   static const String verifyOTP = baseURL + "/verifyOTP";
   static const String register = baseURL + "/register";
   static const String forgotPassword = baseURL + "/forgotPassword";
+  static const String updateAvatar = baseURL + "/updateAvatar";
+  static const String updateUserInfo = baseURL + "/updateUserInfo";
 
   static const String getIdLectureTypeByName =
       baseURL + "/admin/getIdLectureTypeByName";
@@ -33,4 +35,16 @@ class AppUrl {
 
   static const String getAllQuestionQA = baseURL + "/getAllQuestionQA";
   static const String getAllQuestionKeyWord = baseURL + "/getAllQAByKeyWord";
+  static const String getAllBlogs = baseURL + "/getAllBlogs";
+  static const String createNewBlog = baseURL + "/createNewBlog";
+  static const String deleteBlog = baseURL + "/deleteBlog/";
+
+  static const String createTermsOfUse = baseURL + "/createTermsOfUse";
+  static const String getTermsOfUse = baseURL + "/getTermsOfUse";
+  static const String updateTermsOfUse = baseURL + "/updateTermsOfUse/";
+
+  static const String createNewFeedback = baseURL + "/createNewFeedback";
+  static const String getAllFeedbacks = baseURL + "/getAllFeedbacks";
+  static const String deleteFeedback = baseURL + "/deleteFeedback/";
+  static const String updateFeedback = baseURL + "/updateFeedback/";
 }
