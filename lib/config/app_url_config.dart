@@ -1,5 +1,5 @@
 class AppUrl {
-  static const String baseURL = "https://toeic-learning-backend.herokuapp.com";
+  static const String baseURL = "https://toeic-learning-app.herokuapp.com";
 
   static const String login = baseURL + "/login";
   static const String otpRegister = baseURL + "/otpRegister";
@@ -30,4 +30,7 @@ class AppUrl {
 
   static const String getAllExams = baseURL + "/getAllExams";
   static const String deleteExam = baseURL + "/deleteExam/";
+
+  static const String getAllQuestionQA = baseURL + "/getAllQuestionQA";
+  static const String getAllQuestionKeyWord = baseURL + "/getAllQAByKeyWord";
 }
