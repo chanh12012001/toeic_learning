@@ -2,22 +2,16 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:toeic_learning_app/models/toeic_part_model.dart';
+import 'package:toeic_learning_app/models/user_model.dart';
 import 'package:toeic_learning_app/screens/widgets/toeic_questions/exam_manage/exam_list.dart';
 import 'package:toeic_learning_app/screens/widgets/toeic_questions/test_list_by_part.dart';
 import '../config/theme.dart';
 import 'widgets/toeic_questions/part_card.dart';
 
 class QuizScreen extends StatefulWidget {
-  static const String routeName = '/quiz-screen';
+  final User? user;
 
-  static Route route() {
-    return MaterialPageRoute(
-      builder: (_) => const QuizScreen(),
-      settings: const RouteSettings(name: routeName),
-    );
-  }
-
-  const QuizScreen({Key? key}) : super(key: key);
+  const QuizScreen({Key? key, this.user}) : super(key: key);
 
   @override
   State<QuizScreen> createState() => _QuizScreenState();
@@ -118,6 +112,7 @@ class _QuizScreenState extends State<QuizScreen> {
                                   builder: (BuildContext context) {
                                     return TestListByPart(
                                       part: part,
+                                      user: widget.user!,
                                     );
                                   },
                                 ));
@@ -164,7 +159,10 @@ class _QuizScreenState extends State<QuizScreen> {
                               onTap: () {
                                 Navigator.push(context, MaterialPageRoute<void>(
                                   builder: (BuildContext context) {
-                                    return TestListByPart(part: part);
+                                    return TestListByPart(
+                                      part: part,
+                                      user: widget.user!,
+                                    );
                                   },
                                 ));
                               },

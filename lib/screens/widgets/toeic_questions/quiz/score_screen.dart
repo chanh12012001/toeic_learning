@@ -1,11 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:toeic_learning_app/models/user_model.dart';
+import 'package:toeic_learning_app/providers/score_provider.dart';
 import 'package:toeic_learning_app/screens/quiz_screen.dart';
 import '../../../../models/quiz_model.dart';
 
 class ScoreScreen extends StatefulWidget {
   final int? numberOfCorrectAns;
+  final int? examId;
+  final int? part;
+  final User? user;
   final List<Question>? questions;
-  const ScoreScreen({Key? key, this.numberOfCorrectAns, this.questions})
+  const ScoreScreen(
+      {Key? key,
+      this.numberOfCorrectAns,
+      this.questions,
+      this.examId,
+      this.part, this.user})
       : super(key: key);
 
   @override
@@ -15,6 +26,7 @@ class ScoreScreen extends StatefulWidget {
 class _ScoreScreenState extends State<ScoreScreen> {
   @override
   Widget build(BuildContext context) {
+    ScoreProvider scoreProvider = Provider.of<ScoreProvider>(context);
     return Scaffold(
       body: Stack(
         children: [
@@ -53,8 +65,17 @@ class _ScoreScreenState extends State<ScoreScreen> {
                 InkWell(
                   onTap: () {
                     //resert Quiz
-                    Navigator.pushReplacementNamed(
-                        context, QuizScreen.routeName);
+                    scoreProvider.addNewScore(widget.numberOfCorrectAns, widget.user?.userId,
+                        widget.examId, widget.part);
+                     Navigator.push(
+                          context,
+                          MaterialPageRoute<bool>(
+                              builder: (BuildContext context) {
+                            return QuizScreen(
+                              user: widget.user!,
+                            );
+                          }),
+                        );
                   },
                   child: Container(
                     width: double.infinity,

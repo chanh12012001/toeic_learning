@@ -5,6 +5,7 @@ import 'package:toeic_learning_app/providers/exam_provider.dart';
 import 'package:toeic_learning_app/providers/qa_provider.dart';
 import 'package:toeic_learning_app/providers/feedback_provider.dart';
 import 'package:toeic_learning_app/providers/quiz_provider.dart';
+import 'package:toeic_learning_app/providers/score_provider.dart';
 import 'package:toeic_learning_app/providers/terms_of_use_provider.dart';
 import 'package:toeic_learning_app/providers/video_provider.dart';
 import 'package:toeic_learning_app/providers/vocabulary_lesson_provider.dart';
@@ -43,6 +44,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => BlogProvider()),
         ChangeNotifierProvider(create: (_) => TermsOfUseProvider()),
         ChangeNotifierProvider(create: (_) => FeedbackProvider()),
+        ChangeNotifierProvider(create: (_) => ScoreProvider()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

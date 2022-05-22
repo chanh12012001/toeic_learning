@@ -7,6 +7,7 @@ import 'package:toeic_learning_app/config/theme.dart';
 import 'package:toeic_learning_app/models/user_model.dart';
 import 'package:toeic_learning_app/preferences/notification_preference.dart';
 import 'package:toeic_learning_app/preferences/user_preference.dart';
+import 'package:toeic_learning_app/screens/QA_screen.dart';
 import 'package:toeic_learning_app/screens/widgets/alert_dialog.dart';
 import 'package:toeic_learning_app/screens/widgets/home/drawer/feedback/add_feedback_dialog.dart';
 import 'package:toeic_learning_app/screens/widgets/home/drawer/feedback/feedback_list.dart';
@@ -169,7 +170,14 @@ class _DrawerState extends State<DrawerScreen> {
                 AppDrawerTile(
                   index: 2,
                   backgroundColor: kIndigo,
-                  onTap: updateState(3, () {}),
+                  onTap: updateState(3, () {
+                    Navigator.pop(context);
+                    Navigator.push(context, MaterialPageRoute(
+                      builder: (BuildContext context) {
+                        return QAScreen();
+                      },
+                    ));
+                  }),
                 ),
                 // share
                 AppDrawerTile(

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:toeic_learning_app/models/exam_model.dart';
 import 'package:toeic_learning_app/models/toeic_part_model.dart';
+import 'package:toeic_learning_app/models/user_model.dart';
 import 'package:toeic_learning_app/providers/exam_provider.dart';
 import 'package:toeic_learning_app/screens/widgets/loader.dart';
 
@@ -10,9 +11,10 @@ import 'test_part_card.dart';
 
 class TestListByPart extends StatefulWidget {
   final ToeicPart part;
+  final User? user;
   const TestListByPart({
     Key? key,
-    required this.part,
+    required this.part, this.user,
   }) : super(key: key);
 
   @override
@@ -62,6 +64,7 @@ class _TestListByPartState extends State<TestListByPart> {
                     return TestPartCard(
                       part: widget.part,
                       exam: exam,
+                      user: widget.user!,
                     );
                   }),
                 )

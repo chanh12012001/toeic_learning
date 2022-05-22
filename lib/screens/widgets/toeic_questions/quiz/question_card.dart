@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:toeic_learning_app/models/quiz_model.dart';
+import 'package:toeic_learning_app/models/user_model.dart';
 
 import 'audio_quiz.dart';
 import 'option.dart';
@@ -14,6 +15,7 @@ class QuestionCard extends StatefulWidget {
   final Function(bool value) isSelected;
   final int countSelected;
   final int part;
+  final User? user;
   const QuestionCard({
     Key? key,
     required this.quiz,
@@ -24,7 +26,7 @@ class QuestionCard extends StatefulWidget {
     required this.part,
     required this.allQuestions,
     required this.isSelected,
-    required this.countSelected,
+    required this.countSelected, this.user,
   }) : super(key: key);
 
   final Question quiz;
@@ -207,6 +209,9 @@ class _QuestionCardState extends State<QuestionCard>
                             return ScoreScreen(
                               numberOfCorrectAns: widget.numberOfCorrectAns,
                               questions: widget.allQuestions,
+                              examId: widget.quiz.examId,
+                              part: widget.quiz.part,
+                              user: widget.user!,
                             );
                           }),
                         );

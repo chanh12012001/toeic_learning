@@ -4,6 +4,7 @@ import 'package:toeic_learning_app/config/theme.dart';
 import 'package:toeic_learning_app/models/exam_model.dart';
 import 'package:toeic_learning_app/models/quiz_model.dart';
 import 'package:toeic_learning_app/models/toeic_part_model.dart';
+import 'package:toeic_learning_app/models/user_model.dart';
 import 'package:toeic_learning_app/providers/quiz_provider.dart';
 import 'package:toeic_learning_app/screens/widgets/loader.dart';
 
@@ -14,12 +15,13 @@ import 'question_card.dart';
 class QuizBody extends StatefulWidget {
   final Exam exam;
   final ToeicPart part;
+  final User? user;
   final List<Question> quizList;
   const QuizBody({
     Key? key,
     required this.exam,
     required this.part,
-    required this.quizList,
+    required this.quizList, this.user,
   }) : super(key: key);
 
   @override
@@ -251,6 +253,7 @@ class _QuizBodyState extends State<QuizBody> {
                             bottom: 10,
                           ),
                           itemBuilder: (context, index1) => QuestionCard(
+                            user: widget.user!,
                             quiz: snapshot1.data![index1],
                             questions: snapshot1.data!,
                             allQuestions: widget.quizList,

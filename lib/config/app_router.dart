@@ -25,8 +25,6 @@ class AppRouter {
         return LectureScreen.route();
       case VocabularyLessonScreen.routeName:
         return VocabularyLessonScreen.route();
-      case QuizScreen.routeName:
-        return QuizScreen.route();
       case DictionaryScreen.routeName:
         return DictionaryScreen.route();
       case QAScreen.routeName:

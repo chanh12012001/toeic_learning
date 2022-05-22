@@ -134,7 +134,15 @@ class HomeScreen extends StatelessWidget {
                         backgroundColor: kYellow,
                         iconUrl: 'assets/images/practice.png',
                         action: () {
-                          Navigator.pushNamed(context, QuizScreen.routeName);
+                          Navigator.push(
+                          context,
+                          MaterialPageRoute<bool>(
+                              builder: (BuildContext context) {
+                            return QuizScreen(
+                              user: user!,
+                            );
+                          }),
+                        );
                         },
                       ),
                       CategoryCard(
