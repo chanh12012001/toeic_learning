@@ -88,7 +88,7 @@ class _QuestionCardState extends State<QuestionCard>
                   height: 15,
                 )
               : Container(),
-          widget.part != 6
+          (widget.part != 6 ||  widget.part != 1 )&& (widget.part == 2 && selectedAns != null)
               ? Text(
                   widget.quiz.question!,
                   style: const TextStyle(
@@ -123,7 +123,7 @@ class _QuestionCardState extends State<QuestionCard>
                     selectedAns: selectedAns,
                     correctAns: widget.quiz.correctAnswer!,
                     index: index,
-                    text: options[index],
+                    text: selectedAns == null && (widget.part == 1 ||widget.part == 2 ) ? '': options[index] ,
                     press: selectedAns == null
                         ? () {
                             setState(() {
