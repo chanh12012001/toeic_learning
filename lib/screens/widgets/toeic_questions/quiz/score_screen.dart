@@ -70,10 +70,13 @@ class _ScoreScreenState extends State<ScoreScreen> {
                         widget.user?.userId, widget.examId, widget.part);
                     Navigator.pushReplacement(
                       context,
+                      widget.numberOfCorrectAns != null && widget.questions != null ?
                       MaterialPageRoute<bool>(builder: (BuildContext context) {
                         return QuizScreen(
                           user: widget.user!,
                         );
+                      }): MaterialPageRoute<bool>(builder: (BuildContext context) {
+                        return QuizScreen();
                       }),
                     );
                   },

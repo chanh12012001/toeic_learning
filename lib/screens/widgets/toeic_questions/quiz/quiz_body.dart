@@ -21,7 +21,8 @@ class QuizBody extends StatefulWidget {
     Key? key,
     required this.exam,
     required this.part,
-    required this.quizList, this.user,
+    required this.quizList,
+    this.user,
   }) : super(key: key);
 
   @override
@@ -138,12 +139,16 @@ class _QuizBodyState extends State<QuizBody> {
                   ? _pageControllerAudio
                   : null,
               physics: const NeverScrollableScrollPhysics(),
-              itemCount: count(widget.quizList) == 0
-                  ? widget.quizList.length
+              itemCount: count(widget.quizList) == 1
+                  ? 1
                   : count(widget.quizList),
               itemBuilder: (context, index) => FutureBuilder<List<Question>>(
                 future: quizProvider.getQuizGroupList(
-                    widget.exam.exam, widget.quizList[index].groupQuestion),
+                    widget.exam.exam, widget.quizList[index == 0
+                            ? 0
+                            : groupAdd(widget.quizList, index) == 1
+                                ? index
+                                : groupAdd(widget.quizList, index) + index].groupQuestion),
                 builder: (context, snapshot1) {
                   if (snapshot1.hasError) {
                     return Text("${snapshot1.error}");
@@ -155,7 +160,7 @@ class _QuizBodyState extends State<QuizBody> {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                widget.part.part == 6
+                                widget.part.part == 6 || widget.part.part == 7
                                     ? Text(
                                         snapshot1.data![0].question!,
                                         style: TextStyle(
@@ -208,18 +213,18 @@ class _QuizBodyState extends State<QuizBody> {
               onPageChanged: (value) {
                 setState(() {
                   if (value >= keepValuePage) {
-                    valueKeep = quesionNumberGroup;
-                    quesionNumberGroup =
+                    quesionNumberGroup = quesionNumberGroup +
                         groupAdd(widget.quizList, quesionNumberGroup);
                     currentPage =
                         widget.quizList[quesionNumberGroup].questionNumber!;
                     keepValuePage = value;
                   } else {
-                    valueKeep = quesionNumberGroup;
-                    quesionNumberGroup =
+                    debugPrint(quesionNumberGroup.toString());
+                    quesionNumberGroup = quesionNumberGroup -
                         groupSub(widget.quizList, quesionNumberGroup);
-                    currentPage = value +
-                        widget.quizList[valueKeep - quesionNumberGroup]
+                    debugPrint(quesionNumberGroup.toString());
+                    currentPage =
+                        widget.quizList[quesionNumberGroup ]
                             .questionNumber!;
                     keepValuePage = value;
                   }
@@ -235,12 +240,18 @@ class _QuizBodyState extends State<QuizBody> {
                   }
                 });
               },
-              itemCount: count(widget.quizList) == 0
-                  ? widget.quizList.length
-                  : count(widget.quizList),
+              itemCount:
+                  count(widget.quizList) == 1 ? 1 : count(widget.quizList),
               itemBuilder: (context, index) => FutureBuilder<List<Question>>(
                 future: quizProvider.getQuizGroupList(
-                    widget.exam.exam, widget.quizList[index].groupQuestion),
+                    widget.exam.exam,
+                    widget
+                        .quizList[index == 0
+                            ? 0
+                            : groupAdd(widget.quizList, index) == 1
+                                ? index
+                                : groupAdd(widget.quizList, index) + index]
+                        .groupQuestion),
                 builder: (context, snapshot1) {
                   if (snapshot1.hasError) {
                     return Text("${snapshot1.error}");
@@ -302,11 +313,11 @@ class _QuizBodyState extends State<QuizBody> {
   int count(List<Question> question) {
     int value = 0;
     for (int i = 0; i < question.length - 1; i++) {
-      if (question[i].groupQuestion == question[i + 1].groupQuestion) {
+      if (question[i].groupQuestion != question[i + 1].groupQuestion) {
         value++;
       }
     }
-    return value;
+    return value + 1;
   }
 
   int groupAdd(List<Question> question, int valueBegin) {
