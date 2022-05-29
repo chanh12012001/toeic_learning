@@ -16,7 +16,8 @@ class ScoreScreen extends StatefulWidget {
       this.numberOfCorrectAns,
       this.questions,
       this.examId,
-      this.part, this.user})
+      this.part,
+      this.user})
       : super(key: key);
 
   @override
@@ -65,17 +66,16 @@ class _ScoreScreenState extends State<ScoreScreen> {
                 InkWell(
                   onTap: () {
                     //resert Quiz
-                    scoreProvider.addNewScore(widget.numberOfCorrectAns, widget.user?.userId,
-                        widget.examId, widget.part);
-                     Navigator.push(
-                          context,
-                          MaterialPageRoute<bool>(
-                              builder: (BuildContext context) {
-                            return QuizScreen(
-                              user: widget.user!,
-                            );
-                          }),
+                    scoreProvider.addNewScore(widget.numberOfCorrectAns,
+                        widget.user?.userId, widget.examId, widget.part);
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute<bool>(builder: (BuildContext context) {
+                        return QuizScreen(
+                          user: widget.user!,
                         );
+                      }),
+                    );
                   },
                   child: Container(
                     width: double.infinity,

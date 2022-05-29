@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:toeic_learning_app/screens/QA_screen.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 import 'package:provider/provider.dart';
 import 'package:toeic_learning_app/config/theme.dart';
@@ -8,6 +7,7 @@ import 'package:toeic_learning_app/screens/quiz_screen.dart';
 import 'package:toeic_learning_app/screens/widgets/blog/blog_list.dart';
 import 'package:toeic_learning_app/screens/widgets/home/drawer.dart';
 import 'package:toeic_learning_app/screens/widgets/loader.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../models/blog_model.dart';
 import '../models/user_model.dart';
 import '../providers/blog_provider.dart';
@@ -69,23 +69,28 @@ class HomeScreen extends StatelessWidget {
                       const SizedBox(
                         height: 15,
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(right: 10),
-                        child: Align(
-                          alignment: Alignment.topRight,
-                          child: Container(
-                            padding: const EdgeInsets.all(10),
-                            width: 70,
-                            decoration: BoxDecoration(
-                                color: whiteColor,
-                                borderRadius: BorderRadius.circular(10)),
-                            // color: Colors.amberAccent,
-                            child: const Text(
-                              'Tham gia ngay!',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.w600,
+                      GestureDetector(
+                        onTap: () {
+                          _launchUrl();
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.only(right: 10),
+                          child: Align(
+                            alignment: Alignment.topRight,
+                            child: Container(
+                              padding: const EdgeInsets.all(10),
+                              width: 70,
+                              decoration: BoxDecoration(
+                                  color: whiteColor,
+                                  borderRadius: BorderRadius.circular(10)),
+                              // color: Colors.amberAccent,
+                              child: const Text(
+                                'Tham gia ngay!',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w600,
+                                ),
                               ),
                             ),
                           ),
@@ -135,14 +140,14 @@ class HomeScreen extends StatelessWidget {
                         iconUrl: 'assets/images/practice.png',
                         action: () {
                           Navigator.push(
-                          context,
-                          MaterialPageRoute<bool>(
-                              builder: (BuildContext context) {
-                            return QuizScreen(
-                              user: user!,
-                            );
-                          }),
-                        );
+                            context,
+                            MaterialPageRoute<bool>(
+                                builder: (BuildContext context) {
+                              return QuizScreen(
+                                user: user!,
+                              );
+                            }),
+                          );
                         },
                       ),
                       CategoryCard(
@@ -212,5 +217,11 @@ class HomeScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void _launchUrl() async {
+    final Uri _url = Uri.parse('https://www.facebook.com/groups/Toeictuhoc');
+
+    if (!await launchUrl(_url)) throw 'Could not launch $_url';
   }
 }

@@ -37,6 +37,7 @@ dependencies:
   flutter_native_timezone: ^2.0.0
   share_plus: ^4.0.4
   dialogflow_flutter: ^1.0.0
+  url_launcher: ^6.1.2
 
 dev_dependencies:
   flutter_test:

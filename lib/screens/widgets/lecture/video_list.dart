@@ -31,13 +31,6 @@ class _VideoListState extends State<VideoList> {
   }
 
   @override
-  void dispose() {
-    controller?.dispose();
-    controller?.pause();
-    super.dispose();
-  }
-
-  @override
   void initState() {
     super.initState();
     String url = widget.videos.isNotEmpty ? widget.videos[0].videoUrl! : '';
@@ -128,21 +121,26 @@ class _VideoListState extends State<VideoList> {
                           ),
                           Expanded(child: Container()),
                           Row(
-                            children: const [
-                              Icon(
-                                Icons.loop,
-                                size: 30,
-                                color: Color.fromARGB(255, 80, 131, 218),
+                            children: [
+                              GestureDetector(
+                                onTap: () {
+                                  setState(() {});
+                                },
+                                child: const Icon(
+                                  Icons.edit,
+                                  size: 30,
+                                  color: Color.fromARGB(255, 80, 131, 218),
+                                ),
                               ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              Text(
-                                "1 lần",
-                                style: TextStyle(
-                                    fontSize: 15,
-                                    color: Color.fromARGB(192, 0, 0, 0)),
-                              ),
+                              // SizedBox(
+                              //   width: 10,
+                              // ),
+                              // Text(
+                              //   "1 lần",
+                              //   style: TextStyle(
+                              //       fontSize: 15,
+                              //       color: Color.fromARGB(192, 0, 0, 0)),
+                              // ),
                             ],
                           ),
                           const SizedBox(
@@ -189,5 +187,12 @@ class _VideoListState extends State<VideoList> {
         );
       },
     );
+  }
+
+  @override
+  void dispose() {
+    controller?.dispose();
+    controller?.pause();
+    super.dispose();
   }
 }

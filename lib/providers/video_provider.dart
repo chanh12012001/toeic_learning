@@ -9,7 +9,6 @@ class VideoProvider extends ChangeNotifier {
   // get all lessons
   Future<List<Video>> getVideosList(topicId) async {
     videos = await _videoRepository.getVideosList(topicId);
-    notifyListeners();
     return videos;
   }
 

@@ -159,7 +159,9 @@ class _PageViewVocabularyCardState extends State<PageViewVocabularyCard> {
                           _currentPage = _currentPage - 1;
                         });
                       } else {
-                        vocabularyList.remove(vocabularyList[_currentPage]);
+                        setState(() {
+                          vocabularyList.remove(vocabularyList[_currentPage]);
+                        });
                       }
                     }
                     if (vocabularyList.isEmpty) {

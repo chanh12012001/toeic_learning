@@ -49,5 +49,6 @@ class AppUrl {
   static const String updateFeedback = baseURL + "/updateFeedback/";
 
   static const String addNewScore = baseURL + "/addNewScore";
-  static const String getScoreByExamIdAndPart = baseURL + "/getScoreByExamIdAndPart";
+  static const String getScoreByExamIdAndPart =
+      baseURL + "/getScoreByExamIdAndPart";
 }

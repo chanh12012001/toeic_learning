@@ -1,4 +1,0 @@
-io/flutter/plugins/GeneratedPluginRegistrant.java
- io.flutter.plugins.GeneratedPluginRegistrant
-com/example/toeic_learning_app/BuildConfig.java
- com.example.toeic_learning_app.BuildConfig
