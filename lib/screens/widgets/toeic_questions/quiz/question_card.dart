@@ -88,7 +88,7 @@ class _QuestionCardState extends State<QuestionCard>
                   height: 15,
                 )
               : Container(),
-          (widget.part != 6 ||  widget.part != 1 )&& (widget.part == 2 && selectedAns != null)
+          widget.part == 2 && selectedAns == null ? Container() : (widget.part != 6 ||  widget.part != 1 )
               ? Text(
                   widget.quiz.question!,
                   style: const TextStyle(
