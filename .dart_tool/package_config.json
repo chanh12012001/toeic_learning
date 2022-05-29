@@ -525,7 +525,7 @@
     },
     {
       "name": "url_launcher",
-      "rootUri": "file:///C:/Users/ACER/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/url_launcher-6.1.0",
+      "rootUri": "file:///C:/Users/ACER/AppData/Local/Pub/Cache/hosted/pub.dartlang.org/url_launcher-6.1.2",
       "packageUri": "lib/",
       "languageVersion": "2.14"
     },
@@ -614,7 +614,7 @@
       "languageVersion": "2.16"
     }
   ],
-  "generated": "2022-05-10T05:52:45.062905Z",
+  "generated": "2022-05-29T17:05:11.647647Z",
   "generator": "pub",
   "generatorVersion": "2.17.0-182.1.beta"
 }

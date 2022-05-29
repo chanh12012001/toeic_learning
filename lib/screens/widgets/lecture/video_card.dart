@@ -27,6 +27,7 @@ class VideoCard extends StatefulWidget {
 
 class _VideoCardState extends State<VideoCard> {
   ToastService toast = ToastService();
+
   @override
   Widget build(BuildContext context) {
     double radius = 20;
@@ -136,10 +137,10 @@ class _VideoCardState extends State<VideoCard> {
                     const SizedBox(
                       height: 15,
                     ),
-                    const Text(
-                      "Thời lượng: 30 phút",
-                      style:
-                          TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
+                    Text(
+                      "Thời lượng: " + intToTimeLeft(widget.video.time!),
+                      style: const TextStyle(
+                          fontSize: 15, fontWeight: FontWeight.w500),
                     )
                   ],
                 ),
@@ -149,6 +150,29 @@ class _VideoCardState extends State<VideoCard> {
         ),
       ),
     );
+  }
+
+  String intToTimeLeft(int value) {
+    int h, m, s;
+
+    h = value ~/ 3600;
+
+    m = ((value - h * 3600)) ~/ 60;
+
+    s = value - (h * 3600) - (m * 60);
+
+    String hourLeft =
+        h.toString().length < 2 ? "0" + h.toString() : h.toString();
+
+    String minuteLeft =
+        m.toString().length < 2 ? "0" + m.toString() : m.toString();
+
+    String secondsLeft =
+        s.toString().length < 2 ? "0" + s.toString() : s.toString();
+
+    String result = "$hourLeft:$minuteLeft:$secondsLeft";
+
+    return result;
   }
 
   _deleteVideo(Video video) {

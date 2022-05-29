@@ -38,14 +38,17 @@ class _SplashScreenState extends State<SplashScreen>
     Timer(
         const Duration(seconds: 4),
         () => {
-              getUserData().then((value) => value.token == null
-                  ? Navigator.pushNamedAndRemoveUntil(
-                      context, LoginScreen.routeName, (route) => false)
-                  : Navigator.push(context, MaterialPageRoute<void>(
-                      builder: (BuildContext context) {
-                        return HomeScreen(user: value);
-                      },
-                    )))
+              getUserData().then(
+                (value) => value.token == null
+                    ? Navigator.pushNamedAndRemoveUntil(
+                        context, LoginScreen.routeName, (route) => false)
+                    : Navigator.pushAndRemoveUntil(context,
+                        MaterialPageRoute<void>(
+                        builder: (BuildContext context) {
+                          return HomeScreen(user: value);
+                        },
+                      ), (route) => false),
+              )
             });
 
     super.initState();
